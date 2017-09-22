@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		100978F21F7582A800174486 /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100978F11F7582A800174486 /* ProductsCollectionViewController.swift */; };
+		100978F41F75858C00174486 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100978F31F75858C00174486 /* ProductCollectionViewCell.swift */; };
+		100978F81F75973000174486 /* ProductsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100978F71F75973000174486 /* ProductsCollectionReusableView.swift */; };
+		1087D6491F7579E500AB3B40 /* StoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087D6481F7579E500AB3B40 /* StoreTableViewController.swift */; };
+		1087D64B1F757CBD00AB3B40 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087D64A1F757CBD00AB3B40 /* StoreTableViewCell.swift */; };
 		77684F931F72FC7200557F24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77684F921F72FC7200557F24 /* AppDelegate.swift */; };
 		77684F951F72FC7200557F24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77684F941F72FC7200557F24 /* ViewController.swift */; };
 		77684F981F72FC7200557F24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77684F961F72FC7200557F24 /* Main.storyboard */; };
@@ -34,6 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		100978F11F7582A800174486 /* ProductsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewController.swift; sourceTree = "<group>"; };
+		100978F31F75858C00174486 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		100978F71F75973000174486 /* ProductsCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionReusableView.swift; sourceTree = "<group>"; };
+		1087D6481F7579E500AB3B40 /* StoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTableViewController.swift; sourceTree = "<group>"; };
+		1087D64A1F757CBD00AB3B40 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
 		77684F8F1F72FC7200557F24 /* Zap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77684F921F72FC7200557F24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77684F941F72FC7200557F24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,9 +110,14 @@
 				77684F921F72FC7200557F24 /* AppDelegate.swift */,
 				77684F941F72FC7200557F24 /* ViewController.swift */,
 				77684F961F72FC7200557F24 /* Main.storyboard */,
+				100978F31F75858C00174486 /* ProductCollectionViewCell.swift */,
+				100978F11F7582A800174486 /* ProductsCollectionViewController.swift */,
+				1087D64A1F757CBD00AB3B40 /* StoreTableViewCell.swift */,
+				1087D6481F7579E500AB3B40 /* StoreTableViewController.swift */,
 				77684F991F72FC7200557F24 /* Assets.xcassets */,
 				77684F9B1F72FC7200557F24 /* LaunchScreen.storyboard */,
 				77684F9E1F72FC7200557F24 /* Info.plist */,
+				100978F71F75973000174486 /* ProductsCollectionReusableView.swift */,
 			);
 			path = Zap;
 			sourceTree = "<group>";
@@ -193,7 +208,7 @@
 				TargetAttributes = {
 					77684F8E1F72FC7200557F24 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = RG63SMMJEW;
+						DevelopmentTeam = ZDFCA8CTR9;
 						ProvisioningStyle = Automatic;
 					};
 					77684FA21F72FC7200557F24 = {
@@ -263,7 +278,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				77684F951F72FC7200557F24 /* ViewController.swift in Sources */,
+				100978F21F7582A800174486 /* ProductsCollectionViewController.swift in Sources */,
 				77684F931F72FC7200557F24 /* AppDelegate.swift in Sources */,
+				100978F81F75973000174486 /* ProductsCollectionReusableView.swift in Sources */,
+				1087D6491F7579E500AB3B40 /* StoreTableViewController.swift in Sources */,
+				100978F41F75858C00174486 /* ProductCollectionViewCell.swift in Sources */,
+				1087D64B1F757CBD00AB3B40 /* StoreTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,7 +437,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = RG63SMMJEW;
+				DEVELOPMENT_TEAM = ZDFCA8CTR9;
 				INFOPLIST_FILE = Zap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zapmoda.Zap;
@@ -430,7 +450,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = RG63SMMJEW;
+				DEVELOPMENT_TEAM = ZDFCA8CTR9;
 				INFOPLIST_FILE = Zap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zapmoda.Zap;
@@ -516,6 +536,7 @@
 				77684FB91F72FC7200557F24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77684FBA1F72FC7200557F24 /* Build configuration list for PBXNativeTarget "ZapTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +545,7 @@
 				77684FBC1F72FC7200557F24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77684FBD1F72FC7200557F24 /* Build configuration list for PBXNativeTarget "ZapUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +554,7 @@
 				77684FBF1F72FC7200557F24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
