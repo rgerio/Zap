@@ -81,7 +81,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Entrar"/>
                                 <connections>
-                                    <segue destination="Lwb-LT-mcz" kind="show" id="bQ0-JZ-rgL"/>
+                                    <segue destination="Q29-2Q-xVQ" kind="show" id="tqv-91-TBX"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Meu nome é" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KhX-6f-DOw">
@@ -142,34 +142,6 @@
             </objects>
             <point key="canvasLocation" x="237.59999999999999" y="1563.8680659670167"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="WRT-ca-qoB">
-            <objects>
-                <tableViewController id="Lwb-LT-mcz" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lpA-fB-NdV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xEA-27-nhg">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xEA-27-nhg" id="ekR-BG-8Um">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Lwb-LT-mcz" id="4s4-o2-7Wa"/>
-                            <outlet property="delegate" destination="Lwb-LT-mcz" id="O7J-cM-bb0"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tab-6V-UYl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1183" y="1564"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="Rwt-XE-BjN">
             <objects>
@@ -224,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylE-w6-XVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2466.4000000000001" y="1601.649175412294"/>
+            <point key="canvasLocation" x="1100" y="1564"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YUM-cZ-Uc4">
