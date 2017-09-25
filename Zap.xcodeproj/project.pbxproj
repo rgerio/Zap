@@ -57,6 +57,7 @@
 		77684FAE1F72FC7200557F24 /* ZapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77684FB21F72FC7200557F24 /* ZapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapUITests.swift; sourceTree = "<group>"; };
 		77684FB41F72FC7200557F24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4FA78B81F798305004A1D09 /* Zap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zap.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +108,7 @@
 		77684F911F72FC7200557F24 /* Zap */ = {
 			isa = PBXGroup;
 			children = (
+				E4FA78B81F798305004A1D09 /* Zap.entitlements */,
 				77684F921F72FC7200557F24 /* AppDelegate.swift */,
 				77684F941F72FC7200557F24 /* ViewController.swift */,
 				77684F961F72FC7200557F24 /* Main.storyboard */,
@@ -208,8 +210,13 @@
 				TargetAttributes = {
 					77684F8E1F72FC7200557F24 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = ZDFCA8CTR9;
+						DevelopmentTeam = EB72L23DH5;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+						};
 					};
 					77684FA21F72FC7200557F24 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -437,10 +444,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZDFCA8CTR9;
+				DEVELOPMENT_TEAM = EB72L23DH5;
 				INFOPLIST_FILE = Zap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zapmoda.Zap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zapmoda.Zap10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -450,10 +457,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZDFCA8CTR9;
+				DEVELOPMENT_TEAM = EB72L23DH5;
 				INFOPLIST_FILE = Zap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zapmoda.Zap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zapmoda.Zap10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
