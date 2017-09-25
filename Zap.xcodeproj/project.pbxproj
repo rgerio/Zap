@@ -12,6 +12,7 @@
 		100978F81F75973000174486 /* ProductsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100978F71F75973000174486 /* ProductsCollectionReusableView.swift */; };
 		1087D6491F7579E500AB3B40 /* StoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087D6481F7579E500AB3B40 /* StoreTableViewController.swift */; };
 		1087D64B1F757CBD00AB3B40 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087D64A1F757CBD00AB3B40 /* StoreTableViewCell.swift */; };
+		109B44541F7986A10024909A /* InputCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B44531F7986A10024909A /* InputCodeViewController.swift */; };
 		77684F931F72FC7200557F24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77684F921F72FC7200557F24 /* AppDelegate.swift */; };
 		77684F951F72FC7200557F24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77684F941F72FC7200557F24 /* ViewController.swift */; };
 		77684F981F72FC7200557F24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77684F961F72FC7200557F24 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		100978F71F75973000174486 /* ProductsCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionReusableView.swift; sourceTree = "<group>"; };
 		1087D6481F7579E500AB3B40 /* StoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTableViewController.swift; sourceTree = "<group>"; };
 		1087D64A1F757CBD00AB3B40 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
+		109B44531F7986A10024909A /* InputCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCodeViewController.swift; sourceTree = "<group>"; };
 		77684F8F1F72FC7200557F24 /* Zap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77684F921F72FC7200557F24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77684F941F72FC7200557F24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				77684F9B1F72FC7200557F24 /* LaunchScreen.storyboard */,
 				77684F9E1F72FC7200557F24 /* Info.plist */,
 				100978F71F75973000174486 /* ProductsCollectionReusableView.swift */,
+				109B44531F7986A10024909A /* InputCodeViewController.swift */,
 			);
 			path = Zap;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			files = (
 				77684F951F72FC7200557F24 /* ViewController.swift in Sources */,
 				100978F21F7582A800174486 /* ProductsCollectionViewController.swift in Sources */,
+				109B44541F7986A10024909A /* InputCodeViewController.swift in Sources */,
 				77684F931F72FC7200557F24 /* AppDelegate.swift in Sources */,
 				100978F81F75973000174486 /* ProductsCollectionReusableView.swift in Sources */,
 				1087D6491F7579E500AB3B40 /* StoreTableViewController.swift in Sources */,
