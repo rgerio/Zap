@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="237.59999999999999" y="1563.8680659670167"/>
         </scene>
-        <!--View Controller-->
+        <!--Chat View Controller-->
         <scene sceneID="Rwt-XE-BjN">
             <objects>
-                <viewController id="Q29-2Q-xVQ" sceneMemberID="viewController">
+                <viewController id="Q29-2Q-xVQ" customClass="ChatViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8iz-1W-JG1"/>
                         <viewControllerLayoutGuide type="bottom" id="acA-X2-FQe"/>
@@ -153,6 +153,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="t2j-bT-AB0" id="lRL-rq-m3M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylE-w6-XVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
