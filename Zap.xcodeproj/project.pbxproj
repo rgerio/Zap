@@ -59,6 +59,7 @@
 		77684FAE1F72FC7200557F24 /* ZapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77684FB21F72FC7200557F24 /* ZapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapUITests.swift; sourceTree = "<group>"; };
 		77684FB41F72FC7200557F24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4DD9C2B1F7C235D005101B1 /* add_image1600.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_image1600.png; path = "../../Documents/Dados Zap/add_image1600.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +118,7 @@
 				1087D64A1F757CBD00AB3B40 /* StoreTableViewCell.swift */,
 				1087D6481F7579E500AB3B40 /* StoreTableViewController.swift */,
 				77684F991F72FC7200557F24 /* Assets.xcassets */,
+				E4DD9C2B1F7C235D005101B1 /* add_image1600.png */,
 				77684F9B1F72FC7200557F24 /* LaunchScreen.storyboard */,
 				77684F9E1F72FC7200557F24 /* Info.plist */,
 				100978F71F75973000174486 /* ProductsCollectionReusableView.swift */,
