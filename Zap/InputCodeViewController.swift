@@ -12,7 +12,23 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputCode: UITextField!
-   
+    @IBAction func buttonEnter(_ sender: Any) {
+        let alertCode = UIAlertController(title: "Código Inválido", message: "Código Inválido! Por favor tente novamente.", preferredStyle: UIAlertControllerStyle.alert)
+        alertCode.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        if let code = self.inputCode.text {
+            if code.count < 4 {
+                self.present(alertCode, animated: true, completion: nil)
+            }
+        }
+        let alertName = UIAlertController(title: "Nome inválido", message: "Digite o seu nome e tente novamente.", preferredStyle: UIAlertControllerStyle.alert)
+        alertName.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        if let name = self.inputName.text {
+            if name == "" {
+                self.present(alertName, animated: true, completion: nil)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         inputName.delegate = self
@@ -34,7 +50,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == self.inputCode{
             if let text = textField.text {
-                if text.characters.count > 3{
+                if text.count > 3{
                     return false
                 }else{
                     return true
@@ -43,6 +59,8 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+    
+    
     
 
     /*

@@ -63,7 +63,7 @@
             </objects>
             <point key="canvasLocation" x="-599" y="1561"/>
         </scene>
-        <!--Input Code View Controller-->
+        <!--Informações do Cliente-->
         <scene sceneID="DSs-xM-Jdm">
             <objects>
                 <viewController id="tBX-aw-iw9" customClass="InputCodeViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
@@ -81,41 +81,44 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Entrar"/>
                                 <connections>
+                                    <action selector="buttonEnter:" destination="tBX-aw-iw9" eventType="touchUpInside" id="yJm-bk-sY3"/>
                                     <segue destination="Q29-2Q-xVQ" kind="show" id="tqv-91-TBX"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Meu nome é" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KhX-6f-DOw">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Meu nome é" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KhX-6f-DOw" customClass="InputClientInfo" customModule="Zap" customModuleProvider="target">
                                 <rect key="frame" x="16" y="173" width="343" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="name"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Código do produto" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEI-BB-Uvr">
-                                <rect key="frame" x="103" y="327" width="171" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7D7-si-BlE">
-                                <rect key="frame" x="103" y="129" width="171" height="41"/>
+                                <rect key="frame" x="103" y="130" width="171" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEa-UF-IiI">
-                                <rect key="frame" x="16" y="376" width="343" height="64"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" placeholder="- - - -" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEa-UF-IiI" customClass="InputClientInfo" customModule="Zap" customModuleProvider="target">
+                                <rect key="frame" x="103" y="376" width="171" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="go"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Código do produto" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEI-BB-Uvr">
+                                <rect key="frame" x="96" y="327" width="182" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="StU-bM-yE9"/>
+                    <navigationItem key="navigationItem" title="Informações do Cliente" id="StU-bM-yE9">
+                        <barButtonItem key="backBarButtonItem" title="Voltar" id="aEi-yg-pDd"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="inputCode" destination="bEa-UF-IiI" id="GYh-RO-hLS"/>
                         <outlet property="inputName" destination="KhX-6f-DOw" id="D5B-mu-LCa"/>
