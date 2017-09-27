@@ -722,6 +722,7 @@
     <resources>
         <image name="AddImage" width="225" height="225"/>
         <image name="add_image1600.png" width="1600" height="1600"/>
+        <image name="girl-with-shopping-bags-6-by-Vexels" width="256" height="256"/>
         <image name="imagemChamada" width="720" height="1280"/>
         <image name="imagemChat" width="720" height="1280"/>
         <image name="productImage0" width="1035" height="1200"/>
