@@ -42,3 +42,12 @@ class InputClientInfo: UITextField, UITextFieldDelegate {
     */
 
 }
+//
+//  InputClientInfo.swift
+//  Zap
+//
+//  Created by Bruno Roberto Gouveia Carneiro da Cunha Filho on 27/09/17.
+//  Copyright © 2017 Zap. All rights reserved.
+//
+
+
