@@ -59,6 +59,7 @@
 		77684FAE1F72FC7200557F24 /* ZapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77684FB21F72FC7200557F24 /* ZapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapUITests.swift; sourceTree = "<group>"; };
 		77684FB41F72FC7200557F24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4FA78B81F798305004A1D09 /* Zap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zap.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +110,7 @@
 		77684F911F72FC7200557F24 /* Zap */ = {
 			isa = PBXGroup;
 			children = (
+				E4FA78B81F798305004A1D09 /* Zap.entitlements */,
 				77684F921F72FC7200557F24 /* AppDelegate.swift */,
 				77684F941F72FC7200557F24 /* ViewController.swift */,
 				77684F961F72FC7200557F24 /* Main.storyboard */,
@@ -213,6 +215,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = RG63SMMJEW;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+						};
 					};
 					77684FA21F72FC7200557F24 = {
 						CreatedOnToolsVersion = 8.3.3;
