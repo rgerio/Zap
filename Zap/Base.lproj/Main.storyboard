@@ -44,7 +44,7 @@
                                 <state key="normal" title="Entrar"/>
                                 <connections>
                                     <action selector="buttonEnter:" destination="tBX-aw-iw9" eventType="touchUpInside" id="yJm-bk-sY3"/>
-                                    <segue destination="Q29-2Q-xVQ" kind="show" id="tqv-91-TBX"/>
+                                    <segue destination="Q29-2Q-xVQ" kind="show" identifier="moveToChat" id="tqv-91-TBX"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Meu nome é" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KhX-6f-DOw" customClass="InputClientInfo" customModule="Zap" customModuleProvider="target">
@@ -82,6 +82,7 @@
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="aEi-yg-pDd"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonEnterOutlet" destination="7td-Qw-bVI" id="rky-gn-yNA"/>
                         <outlet property="inputCode" destination="bEa-UF-IiI" id="GYh-RO-hLS"/>
                         <outlet property="inputName" destination="KhX-6f-DOw" id="D5B-mu-LCa"/>
                     </connections>
