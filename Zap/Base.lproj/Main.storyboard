@@ -332,9 +332,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Lojas" id="lCF-Ak-3Nc"/>
-                    <connections>
-                        <segue destination="X94-pf-NTf" kind="show" identifier="productsSegue" id="Tc9-hd-IET"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mk9-71-gPU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -537,7 +534,6 @@
                                     <outlet property="storeImage" destination="zyY-Nb-SMt" id="Kof-8t-jEf"/>
                                     <outlet property="storeLastTimeLabel" destination="P3M-QZ-OiD" id="umC-Iw-pUC"/>
                                     <outlet property="storeNameLabel" destination="Wgn-EG-N4x" id="8yV-RY-Mf8"/>
-                                    <segue destination="TbC-4C-u8z" kind="show" id="d82-9U-73Z"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -548,6 +544,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Minhas conversas" id="gX1-Jn-QZn"/>
+                    <connections>
+                        <segue destination="TbC-4C-u8z" kind="show" identifier="chatSeller" id="dra-1z-Nzs"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7kf-u2-wvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
