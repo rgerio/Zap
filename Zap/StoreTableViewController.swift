@@ -47,7 +47,7 @@ class StoreTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "productsSegue", sender: nil)
+        self.performSegue(withIdentifier: "chatSeller", sender: nil)
     }
     
     /*
