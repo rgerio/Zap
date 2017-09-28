@@ -12,7 +12,8 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputCode: UITextField!
-    @IBAction func buttonEnter(_ sender: Any) {
+    @IBOutlet weak var buttonEnterOutlet: UIButton!
+    @IBAction func buttonEnter(_ sender: Any?) {
         let alertCode = UIAlertController(title: "Código Inválido", message: "Código Inválido! Por favor tente novamente.", preferredStyle: UIAlertControllerStyle.alert)
         alertCode.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         if let code = self.inputCode.text {
@@ -27,12 +28,18 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                 self.present(alertName, animated: true, completion: nil)
             }
         }
+        
+        if sender == nil{
+            self.performSegue(withIdentifier: "moveToChat", sender: self)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         inputName.delegate = self
+        inputName.tag = 0
         inputCode.delegate = self
+        inputCode.tag = 1
 
         // Do any additional setup after loading the view.
     }
@@ -43,8 +50,20 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+            self.buttonEnter(nil)
+        }
+        // Do not add a line break
+        return false
+    }
+    
+    func performAction() {
+        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
