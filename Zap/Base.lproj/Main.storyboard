@@ -115,8 +115,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQP-Rw-jc7">
-                                                    <rect key="frame" x="49" y="11" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQP-Rw-jc7">
+                                                    <rect key="frame" x="49" y="11" width="0.0" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -150,11 +150,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Enviar"/>
+                                <connections>
+                                    <action selector="pressedSendButton:" destination="Q29-2Q-xVQ" eventType="primaryActionTriggered" id="I5Q-B6-EJa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="sendButton" destination="T8c-f3-Ckd" id="Cnj-mw-BlE"/>
                         <outlet property="tableView" destination="t2j-bT-AB0" id="lRL-rq-m3M"/>
                         <outlet property="textFieldChatClient" destination="KDY-yz-XIl" id="Emy-m0-in1"/>
                     </connections>
@@ -740,6 +744,6 @@
         <image name="user" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SFp-Mv-PXb"/>
+        <segue reference="HYy-AK-n7Q"/>
     </inferredMetricsTieBreakers>
 </document>
