@@ -27,7 +27,7 @@
 		77684FB31F72FC7200557F24 /* ZapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77684FB21F72FC7200557F24 /* ZapUITests.swift */; };
 		B4616073F3E418B75650688D /* Pods_ZapUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5355450B9028FDA3596346AD /* Pods_ZapUITests.framework */; };
 		E4152A511F7E92FC0010A0B5 /* Produto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4152A501F7E92FC0010A0B5 /* Produto.swift */; };
-		E4152A551F7E9DAD0010A0B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4152A541F7E9C5C0010A0B5 /* GoogleService-Info.plist */; };
+		E4152A571F7EC4580010A0B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4152A561F7EC44B0010A0B5 /* GoogleService-Info.plist */; };
 		E45960B01F7E835800BDC3AC /* GenerateProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45960AF1F7E835800BDC3AC /* GenerateProductViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +81,7 @@
 		B50D550C4005AA3E340DA190 /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4152A4F1F7E8D930010A0B5 /* Zap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zap.entitlements; sourceTree = "<group>"; };
 		E4152A501F7E92FC0010A0B5 /* Produto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Produto.swift; sourceTree = "<group>"; };
-		E4152A541F7E9C5C0010A0B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E4152A561F7EC44B0010A0B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E45960AF1F7E835800BDC3AC /* GenerateProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateProductViewController.swift; sourceTree = "<group>"; };
 		E532F6FB01DD804B9AEDA5E2 /* Pods-ZapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapTests/Pods-ZapTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,7 +140,7 @@
 		77684F861F72FC7200557F24 = {
 			isa = PBXGroup;
 			children = (
-				E4152A541F7E9C5C0010A0B5 /* GoogleService-Info.plist */,
+				E4152A561F7EC44B0010A0B5 /* GoogleService-Info.plist */,
 				77684F911F72FC7200557F24 /* Zap */,
 				77684FA61F72FC7200557F24 /* ZapTests */,
 				77684FB11F72FC7200557F24 /* ZapUITests */,
@@ -331,7 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77684F9D1F72FC7200557F24 /* LaunchScreen.storyboard in Resources */,
-				E4152A551F7E9DAD0010A0B5 /* GoogleService-Info.plist in Resources */,
+				E4152A571F7EC4580010A0B5 /* GoogleService-Info.plist in Resources */,
 				77684F9A1F72FC7200557F24 /* Assets.xcassets in Resources */,
 				77684F981F72FC7200557F24 /* Main.storyboard in Resources */,
 			);
