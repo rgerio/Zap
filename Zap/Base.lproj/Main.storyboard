@@ -178,10 +178,10 @@
             </objects>
             <point key="canvasLocation" x="-622" y="2311"/>
         </scene>
-        <!--View Controller-->
+        <!--Generate Product View Controller-->
         <scene sceneID="BE4-g9-VQR">
             <objects>
-                <viewController id="rVE-uX-YCq" sceneMemberID="viewController">
+                <viewController id="rVE-uX-YCq" customClass="GenerateProductViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hFA-2H-kwf"/>
                         <viewControllerLayoutGuide type="bottom" id="CFV-od-K3f"/>
@@ -266,11 +266,10 @@
                                 <rect key="frame" x="111" y="407" width="186" height="104"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="digite a descrição aqui." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WlS-xs-sWM">
-                                <rect key="frame" x="161" y="283" width="188" height="85"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IFd-xc-B5w">
+                                <rect key="frame" x="159" y="283" width="185" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -278,6 +277,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="mm8-NC-fAL"/>
+                    <connections>
+                        <outlet property="descricaoTextView" destination="IFd-xc-B5w" id="RJC-km-wla"/>
+                        <outlet property="nomeLojaTextField" destination="NPS-7X-lh3" id="ScH-VB-KJV"/>
+                        <outlet property="nomeProduoTextField" destination="08G-pl-foK" id="sma-h8-hcU"/>
+                        <outlet property="nomeVendedorTextField" destination="HgE-n5-t4Y" id="jKg-L7-eb1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AsR-2F-PYW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -309,17 +314,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ea-5R-s8v">
-                                <rect key="frame" x="246" y="601" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="ok"/>
-                            </button>
                             <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zq0-YW-bqa">
                                 <rect key="frame" x="75" y="238" width="225" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ea-5R-s8v">
+                                <rect key="frame" x="254" y="541" width="46" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="ok"/>
+                                <connections>
+                                    <segue destination="Pjt-Ll-EDB" kind="show" id="SFp-Mv-PXb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -730,4 +738,7 @@
         <image name="rennerImage" width="160" height="160"/>
         <image name="user" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="SFp-Mv-PXb"/>
+    </inferredMetricsTieBreakers>
 </document>

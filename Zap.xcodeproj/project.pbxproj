@@ -26,6 +26,9 @@
 		77684FA81F72FC7200557F24 /* ZapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77684FA71F72FC7200557F24 /* ZapTests.swift */; };
 		77684FB31F72FC7200557F24 /* ZapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77684FB21F72FC7200557F24 /* ZapUITests.swift */; };
 		B4616073F3E418B75650688D /* Pods_ZapUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5355450B9028FDA3596346AD /* Pods_ZapUITests.framework */; };
+		E4152A511F7E92FC0010A0B5 /* Produto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4152A501F7E92FC0010A0B5 /* Produto.swift */; };
+		E4152A551F7E9DAD0010A0B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4152A541F7E9C5C0010A0B5 /* GoogleService-Info.plist */; };
+		E45960B01F7E835800BDC3AC /* GenerateProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45960AF1F7E835800BDC3AC /* GenerateProductViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +79,10 @@
 		7CBFFBCCF53C7FBD83361775 /* Pods-Zap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zap/Pods-Zap.debug.xcconfig"; sourceTree = "<group>"; };
 		B5052A336C0FFBCE59DAB347 /* Pods_ZapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50D550C4005AA3E340DA190 /* Pods_Zap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E45960AC1F7E6E7400BDC3AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E4152A4F1F7E8D930010A0B5 /* Zap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zap.entitlements; sourceTree = "<group>"; };
+		E4152A501F7E92FC0010A0B5 /* Produto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Produto.swift; sourceTree = "<group>"; };
+		E4152A541F7E9C5C0010A0B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E45960AF1F7E835800BDC3AC /* GenerateProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateProductViewController.swift; sourceTree = "<group>"; };
 		E532F6FB01DD804B9AEDA5E2 /* Pods-ZapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapTests/Pods-ZapTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +140,7 @@
 		77684F861F72FC7200557F24 = {
 			isa = PBXGroup;
 			children = (
+				E4152A541F7E9C5C0010A0B5 /* GoogleService-Info.plist */,
 				77684F911F72FC7200557F24 /* Zap */,
 				77684FA61F72FC7200557F24 /* ZapTests */,
 				77684FB11F72FC7200557F24 /* ZapUITests */,
@@ -156,7 +163,7 @@
 		77684F911F72FC7200557F24 /* Zap */ = {
 			isa = PBXGroup;
 			children = (
-				E45960AC1F7E6E7400BDC3AC /* GoogleService-Info.plist */,
+				E4152A4F1F7E8D930010A0B5 /* Zap.entitlements */,
 				77684F921F72FC7200557F24 /* AppDelegate.swift */,
 				77684F941F72FC7200557F24 /* ViewController.swift */,
 				77684F961F72FC7200557F24 /* Main.storyboard */,
@@ -172,6 +179,8 @@
 				100978F71F75973000174486 /* ProductsCollectionReusableView.swift */,
 				109B44531F7986A10024909A /* InputCodeViewController.swift */,
 				107E2E601F7C3130005566E6 /* InputClientInfo.swift */,
+				E45960AF1F7E835800BDC3AC /* GenerateProductViewController.swift */,
+				E4152A501F7E92FC0010A0B5 /* Produto.swift */,
 			);
 			path = Zap;
 			sourceTree = "<group>";
@@ -273,6 +282,14 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = RG63SMMJEW;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					77684FA21F72FC7200557F24 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -314,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77684F9D1F72FC7200557F24 /* LaunchScreen.storyboard in Resources */,
+				E4152A551F7E9DAD0010A0B5 /* GoogleService-Info.plist in Resources */,
 				77684F9A1F72FC7200557F24 /* Assets.xcassets in Resources */,
 				77684F981F72FC7200557F24 /* Main.storyboard in Resources */,
 			);
@@ -505,6 +523,8 @@
 				1087D6491F7579E500AB3B40 /* StoreTableViewController.swift in Sources */,
 				100978F41F75858C00174486 /* ProductCollectionViewCell.swift in Sources */,
 				771EC93E1F7C214D00BE97BC /* ChatTableViewCell.swift in Sources */,
+				E4152A511F7E92FC0010A0B5 /* Produto.swift in Sources */,
+				E45960B01F7E835800BDC3AC /* GenerateProductViewController.swift in Sources */,
 				771EC93C1F7C1FE500BE97BC /* ChatViewController.swift in Sources */,
 				1087D64B1F757CBD00AB3B40 /* StoreTableViewCell.swift in Sources */,
 			);
