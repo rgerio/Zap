@@ -8,9 +8,15 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+    @IBOutlet weak var textFieldChatClient: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textFieldChatClient.resignFirstResponder()
+        return true
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
