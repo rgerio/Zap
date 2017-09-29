@@ -138,8 +138,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Digite algo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KDY-yz-XIl">
-                                <rect key="frame" x="16" y="607" width="261" height="40"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite algo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KDY-yz-XIl">
+                                <rect key="frame" x="16" y="612" width="261" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -156,6 +156,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="t2j-bT-AB0" id="lRL-rq-m3M"/>
+                        <outlet property="textFieldChatClient" destination="KDY-yz-XIl" id="Emy-m0-in1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylE-w6-XVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
