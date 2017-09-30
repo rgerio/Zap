@@ -15,6 +15,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
 
     var cliente_id: DatabaseReference!
     var produto_id: DatabaseReference!
+    var conversa_id: DatabaseReference!
     
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputCode: UITextField!
@@ -54,7 +55,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
         if dadosValidos {
             self.dbref.child("produtos").observeSingleEvent(of: .value, with: { (snapshot) in
                 // OBTENCAO DO PRODUTO
-                if (snapshot.hasChild(self.inputCode.text!)) {
+                if (snapshot.hasChild(self.inputCode.text!) || true) {
                     print("PRODUTO EXISTE")
                     self.produto_id = snapshot.ref.child(self.inputCode.text!)
                     if self.cliente_id == nil {
@@ -63,9 +64,37 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                         print("Novo cliente adicionado")
                     }
                     if dadosValidos {
-                        /*self.dbref.child("conversas").queryOrdered(byChild: "cliente_id").queryEqual(toValue: <#T##Any?#>)*/
+                        let myRef = self.dbref.child("conversas").queryOrdered(byChild: "cliente_id").queryEqual(toValue: "-KvE0oeXdifyirjsAG1T")
+                        //let guardaAi = self.cliente_id.key
+                        
+                        myRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                            // OBTENCAO DA CONVERSA
+                            
+                            for snap in snapshot.children {
+                                let value = (snap as! DataSnapshot).value as? NSDictionary
+                                let produto_id = value?["produto_id"] as? String ?? ""
+                                print("Produto_ID: \(produto_id)")
+                                if produto_id == self.produto_id.key {
+                                    print("EXISTE UMA CONVERSA")
+                                    self.conversa_id = (snap as! DataSnapshot).ref
+                                    print(self.conversa_id.key)
+                                } else {
+                                    print("NÃO EXISTE UMA CONVERSA")
+                                    
+                                    self.conversa_id = self.dbref.child("conversas").childByAutoId()
+                                    self.conversa_id.setValue(["cliente_id": self.cliente_id.key, "produto_id": self.produto_id.key, "vendedoratual_id": "", "mensagens":""])
+                                    print("Novo produto adicionado")
+                                    
+                                }
+                                
+                            }
+                        }) { (error) in
+                            print(error.localizedDescription)
+                        }
+                        
+                        
                         self.cliente_id.observeSingleEvent(of: .value, with: { (snapshot) in
-                            // OBTENCAO DO CLIENTE
+                            // DEBUG DE OBTENCAO DO CLIENTE
                             let value = snapshot.value as? NSDictionary
                             let username = value?["nome"] as? String ?? ""
                             print("Usuário: \(username)")
@@ -95,8 +124,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "moveToChat") {
             let vc = segue.destination as! ChatViewController
-            vc.conversa_id = nil
-            //vc.produto_id = self.produto_id
+            vc.conversa_id = self.conversa_id
         }
     }
     
