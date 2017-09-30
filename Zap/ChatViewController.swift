@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     @IBOutlet weak var textFieldChatClient: UITextField!
@@ -16,6 +17,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var sendButton: UIButton!
     
     var messages = [String]()
+    var cliente_id: DatabaseReference!
+    var produto_id: DatabaseReference!
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.textFieldChatClient.resignFirstResponder()
@@ -38,6 +41,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        print(self.cliente_id)
         // Do any additional setup after loading the view.
     }
 

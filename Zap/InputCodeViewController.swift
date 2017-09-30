@@ -13,10 +13,11 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     
     var dbref: DatabaseReference!
 
+    var cliente_id: DatabaseReference!
+    var produto_id: DatabaseReference!
     
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputCode: UITextField!
-    @IBOutlet weak var buttonEnterOutlet: UIButton!
     @IBAction func buttonEnter(_ sender: Any?) {
         let alertCode = UIAlertController(title: "Código Inválido", message: "Código Inválido! Por favor tente novamente.", preferredStyle: UIAlertControllerStyle.alert)
         alertCode.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
@@ -33,23 +34,37 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        if sender == nil{
-            let chave = self.dbref.child("clientes").childByAutoId()
-            chave.setValue(["nome": inputName.text])
-            
-            chave.observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                let username = value?["nome"] as? String ?? ""
-                print(username)
-                
-                // ...
-            }) { (error) in
-                print(error.localizedDescription)
+        self.cliente_id = self.dbref.child("clientes").childByAutoId()
+        cliente_id.setValue(["nome": self.inputName.text])
+        
+        cliente_id.observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let username = value?["nome"] as? String ?? ""
+            print(username)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        self.dbref.child("produtos").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get product value
+            if (snapshot.hasChild(self.inputCode.text!)) {
+                print("PRODUTO EXISTE")
+                self.performSegue(withIdentifier: "moveToChat", sender: self)
+            } else {
+                print("PRODUTO NÃO EXISTE")
+                self.present(alertCode, animated: true, completion: nil)
             }
-            
-
-            self.performSegue(withIdentifier: "moveToChat", sender: self)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "moveToChat") {
+            let vc = segue.destination as! ChatViewController
+            vc.cliente_id = self.cliente_id
+            vc.produto_id = self.produto_id
         }
     }
     
