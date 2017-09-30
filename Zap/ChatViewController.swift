@@ -13,20 +13,23 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet var sendButton: UIButton!
+    
+    var messages = [String]()
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textFieldChatClient.resignFirstResponder()
+        self.textFieldChatClient.resignFirstResponder()
         return true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IncomingCell", for: indexPath) as! ChatTableViewCell
-        
-        // Configure the cell...
-        
+        cell.textLabel?.text = self.messages[indexPath.row]
+        cell.textLabel?.textAlignment = .right
         return cell
     }
     
@@ -43,7 +46,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func pressedSendButton(_ sender: Any) {
+        let str = self.textFieldChatClient.text
+        self.messages.append(str!)
+        self.textFieldChatClient.text = ""
+        self.tableView?.reloadData()
+        self.textFieldChatClient.resignFirstResponder()
+    }
+    
     /*
     // MARK: - Navigation
 

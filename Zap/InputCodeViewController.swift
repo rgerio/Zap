@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class InputCodeViewController: UIViewController, UITextFieldDelegate {
+    
+    var dbref: DatabaseReference!
 
+    
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputCode: UITextField!
     @IBOutlet weak var buttonEnterOutlet: UIButton!
@@ -30,6 +34,21 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
         }
         
         if sender == nil{
+            let chave = self.dbref.child("clientes").childByAutoId()
+            chave.setValue(["nome": inputName.text])
+            
+            chave.observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                let username = value?["nome"] as? String ?? ""
+                print(username)
+                
+                // ...
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
+
             self.performSegue(withIdentifier: "moveToChat", sender: self)
         }
     }
@@ -40,6 +59,8 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
         inputName.tag = 0
         inputCode.delegate = self
         inputCode.tag = 1
+        
+        dbref = Database.database().reference()
 
         // Do any additional setup after loading the view.
     }
