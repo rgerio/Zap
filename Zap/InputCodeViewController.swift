@@ -64,8 +64,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                         print("Novo cliente adicionado")
                     }
                     if dadosValidos {
-                        let myRef = self.dbref.child("conversas").queryOrdered(byChild: "cliente_id").queryEqual(toValue: "-KvE0oeXdifyirjsAG1T")
-                        //let guardaAi = self.cliente_id.key
+                        let myRef = self.dbref.child("conversas").queryOrdered(byChild: "cliente_id").queryEqual(toValue: self.cliente_id.key)
                         
                         myRef.observeSingleEvent(of: .value, with: { (snapshot) in
                             // OBTENCAO DA CONVERSA
