@@ -55,7 +55,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
         if dadosValidos {
             self.dbref.child("produtos").observeSingleEvent(of: .value, with: { (snapshot) in
                 // OBTENCAO DO PRODUTO
-                if (snapshot.hasChild(self.inputCode.text!) || true) {
+                if (snapshot.hasChild(self.inputCode.text!)) {
                     print("PRODUTO EXISTE")
                     self.produto_id = snapshot.ref.child(self.inputCode.text!)
                     if self.cliente_id == nil {
