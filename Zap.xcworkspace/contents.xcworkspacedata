@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:MessageManager.swift">
+   </FileRef>
+   <FileRef
       location = "group:Zap.xcodeproj">
    </FileRef>
    <FileRef

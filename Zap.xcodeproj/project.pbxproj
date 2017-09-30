@@ -12,6 +12,13 @@
 		100978F41F75858C00174486 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100978F31F75858C00174486 /* ProductCollectionViewCell.swift */; };
 		100978F81F75973000174486 /* ProductsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100978F71F75973000174486 /* ProductsCollectionReusableView.swift */; };
 		107E2E611F7C3130005566E6 /* InputClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E2E601F7C3130005566E6 /* InputClientInfo.swift */; };
+		1086F66B1F8045A80047E9D7 /* ChatFrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086F66A1F8045A80047E9D7 /* ChatFrameViewController.swift */; };
+		1086F66D1F8047CE0047E9D7 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086F66C1F8047CE0047E9D7 /* Chat.swift */; };
+		1086F66F1F80486C0047E9D7 /* MMChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086F66E1F80486C0047E9D7 /* MMChatViewController.swift */; };
+		1086F6711F80490D0047E9D7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086F6701F80490D0047E9D7 /* Message.swift */; };
+		1086F6731F80492E0047E9D7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086F6721F80492E0047E9D7 /* User.swift */; };
+		1086F6791F804BA10047E9D7 /* MMDateMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086F6781F804BA10047E9D7 /* MMDateMessageCell.swift */; };
+		1086F67B1F804BFA0047E9D7 /* MMDateMessageCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086F67A1F804BFA0047E9D7 /* MMDateMessageCellLayout.swift */; };
 		1087D6491F7579E500AB3B40 /* StoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087D6481F7579E500AB3B40 /* StoreTableViewController.swift */; };
 		1087D64B1F757CBD00AB3B40 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087D64A1F757CBD00AB3B40 /* StoreTableViewCell.swift */; };
 		109B44541F7986A10024909A /* InputCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B44531F7986A10024909A /* InputCodeViewController.swift */; };
@@ -58,6 +65,13 @@
 		100978F31F75858C00174486 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		100978F71F75973000174486 /* ProductsCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionReusableView.swift; sourceTree = "<group>"; };
 		107E2E601F7C3130005566E6 /* InputClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputClientInfo.swift; sourceTree = "<group>"; };
+		1086F66A1F8045A80047E9D7 /* ChatFrameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFrameViewController.swift; sourceTree = "<group>"; };
+		1086F66C1F8047CE0047E9D7 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		1086F66E1F80486C0047E9D7 /* MMChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMChatViewController.swift; sourceTree = "<group>"; };
+		1086F6701F80490D0047E9D7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		1086F6721F80492E0047E9D7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1086F6781F804BA10047E9D7 /* MMDateMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMDateMessageCell.swift; sourceTree = "<group>"; };
+		1086F67A1F804BFA0047E9D7 /* MMDateMessageCellLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMDateMessageCellLayout.swift; sourceTree = "<group>"; };
 		1087D6481F7579E500AB3B40 /* StoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTableViewController.swift; sourceTree = "<group>"; };
 		1087D64A1F757CBD00AB3B40 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
 		109B44531F7986A10024909A /* InputCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCodeViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +136,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1086F6751F804AA10047E9D7 /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				1086F6761F804B380047E9D7 /* Cell */,
+			);
+			path = WeChat;
+			sourceTree = "<group>";
+		};
+		1086F6761F804B380047E9D7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1086F6771F804B420047E9D7 /* Date */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1086F6771F804B420047E9D7 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				1086F6781F804BA10047E9D7 /* MMDateMessageCell.swift */,
+				1086F67A1F804BFA0047E9D7 /* MMDateMessageCellLayout.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
 		3E337685B90974A9179FB2CC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,11 +210,16 @@
 		77684F911F72FC7200557F24 /* Zap */ = {
 			isa = PBXGroup;
 			children = (
+				1086F6751F804AA10047E9D7 /* WeChat */,
 				E4152A4F1F7E8D930010A0B5 /* Zap.entitlements */,
 				77684F921F72FC7200557F24 /* AppDelegate.swift */,
 				77684F941F72FC7200557F24 /* ViewController.swift */,
 				77684F961F72FC7200557F24 /* Main.storyboard */,
 				771EC93B1F7C1FE500BE97BC /* ChatViewController.swift */,
+				1086F66A1F8045A80047E9D7 /* ChatFrameViewController.swift */,
+				1086F66E1F80486C0047E9D7 /* MMChatViewController.swift */,
+				1086F6701F80490D0047E9D7 /* Message.swift */,
+				1086F6721F80492E0047E9D7 /* User.swift */,
 				771EC93D1F7C214D00BE97BC /* ChatTableViewCell.swift */,
 				100978F31F75858C00174486 /* ProductCollectionViewCell.swift */,
 				100978F11F7582A800174486 /* ProductsCollectionViewController.swift */,
@@ -193,6 +237,7 @@
 				E4152A5E1F7FCFEA0010A0B5 /* Loja.swift */,
 				E4152A601F7FD0050010A0B5 /* Cliente.swift */,
 				E4152A621F7FD01C0010A0B5 /* Conversa.swift */,
+				1086F66C1F8047CE0047E9D7 /* Chat.swift */,
 			);
 			path = Zap;
 			sourceTree = "<group>";
@@ -505,6 +550,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/NoChat/NoChat.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -513,6 +559,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NoChat.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -530,14 +577,21 @@
 			files = (
 				77684F951F72FC7200557F24 /* ViewController.swift in Sources */,
 				E4152A5F1F7FCFEA0010A0B5 /* Loja.swift in Sources */,
+				1086F66D1F8047CE0047E9D7 /* Chat.swift in Sources */,
+				1086F6791F804BA10047E9D7 /* MMDateMessageCell.swift in Sources */,
 				100978F21F7582A800174486 /* ProductsCollectionViewController.swift in Sources */,
 				109B44541F7986A10024909A /* InputCodeViewController.swift in Sources */,
 				77684F931F72FC7200557F24 /* AppDelegate.swift in Sources */,
+				1086F6711F80490D0047E9D7 /* Message.swift in Sources */,
 				100978F81F75973000174486 /* ProductsCollectionReusableView.swift in Sources */,
 				107E2E611F7C3130005566E6 /* InputClientInfo.swift in Sources */,
 				1087D6491F7579E500AB3B40 /* StoreTableViewController.swift in Sources */,
+				1086F67B1F804BFA0047E9D7 /* MMDateMessageCellLayout.swift in Sources */,
+				1086F6731F80492E0047E9D7 /* User.swift in Sources */,
 				100978F41F75858C00174486 /* ProductCollectionViewCell.swift in Sources */,
+				1086F66F1F80486C0047E9D7 /* MMChatViewController.swift in Sources */,
 				771EC93E1F7C214D00BE97BC /* ChatTableViewCell.swift in Sources */,
+				1086F66B1F8045A80047E9D7 /* ChatFrameViewController.swift in Sources */,
 				E4152A511F7E92FC0010A0B5 /* Produto.swift in Sources */,
 				E45960B01F7E835800BDC3AC /* GenerateProductViewController.swift in Sources */,
 				E4152A631F7FD01C0010A0B5 /* Conversa.swift in Sources */,

@@ -83,12 +83,57 @@
                     <connections>
                         <outlet property="inputCode" destination="bEa-UF-IiI" id="GYh-RO-hLS"/>
                         <outlet property="inputName" destination="KhX-6f-DOw" id="D5B-mu-LCa"/>
-                        <segue destination="Q29-2Q-xVQ" kind="show" identifier="moveToChat" id="3gx-Md-bBY"/>
+                        <segue destination="nl4-4Y-1vE" kind="show" identifier="moveToChat" id="RXp-5d-nU3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XpO-h7-0Yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="237.59999999999999" y="1563.8680659670167"/>
+        </scene>
+        <!--Chats-->
+        <scene sceneID="ln4-1B-GXw">
+            <objects>
+                <tableViewController id="xxa-BN-6wJ" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="E20-2C-7U0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lKN-Kx-45P">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lKN-Kx-45P" id="Zpg-D0-zvS">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xxa-BN-6wJ" id="Cuf-qY-Ql5"/>
+                            <outlet property="delegate" destination="xxa-BN-6wJ" id="X3s-fn-vEv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Chats" id="bYc-fZ-hvE"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="axd-JJ-U1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2022" y="1560"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GTb-B8-s1A">
+            <objects>
+                <navigationController id="nl4-4Y-1vE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ehz-zR-IfN">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xxa-BN-6wJ" kind="relationship" relationship="rootViewController" id="b83-pe-8uy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zc4-Gk-H0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1132" y="1564"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="Rwt-XE-BjN">
@@ -164,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylE-w6-XVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1100" y="1564"/>
+            <point key="canvasLocation" x="2790" y="1239"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YUM-cZ-Uc4">
