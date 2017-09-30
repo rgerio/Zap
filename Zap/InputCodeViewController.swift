@@ -76,7 +76,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                         
                         
                         
-                        //self.performSegue(withIdentifier: "moveToChat", sender: self)
+                        self.performSegue(withIdentifier: "moveToChat", sender: self)
                     }
                 } else {
                     print("PRODUTO NÃO EXISTE")
