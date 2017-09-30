@@ -41,7 +41,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        print(self.cliente_id)
         // Do any additional setup after loading the view.
     }
 

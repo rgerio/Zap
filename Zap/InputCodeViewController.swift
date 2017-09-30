@@ -19,44 +19,76 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputCode: UITextField!
     @IBAction func buttonEnter(_ sender: Any?) {
+        //DECLARACAO DE ALERTS
+        let alertName = UIAlertController(title: "Nome Inválido", message: "Digite o seu nome e tente novamente.", preferredStyle: UIAlertControllerStyle.alert)
+        alertName.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        
         let alertCode = UIAlertController(title: "Código Inválido", message: "Código Inválido! Por favor tente novamente.", preferredStyle: UIAlertControllerStyle.alert)
         alertCode.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        if let code = self.inputCode.text {
-            if code.count < 4 {
-                self.present(alertCode, animated: true, completion: nil)
-            }
-        }
-        let alertName = UIAlertController(title: "Nome inválido", message: "Digite o seu nome e tente novamente.", preferredStyle: UIAlertControllerStyle.alert)
-        alertName.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        if let name = self.inputName.text {
-            if name == "" {
-                self.present(alertName, animated: true, completion: nil)
+        
+        let alertCodeNone = UIAlertController(title: "Código Não Existente", message: "Código Não Existente! Por favor revise o código e tente novamente.", preferredStyle: UIAlertControllerStyle.alert)
+        alertCodeNone.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        
+        //VALIDACOES
+        var dadosValidos = true
+        if dadosValidos {
+            if let name = self.inputName.text {
+                if name == "" {
+                    self.present(alertName, animated: true, completion: nil)
+                    dadosValidos = false
+                }
             }
         }
         
-        self.cliente_id = self.dbref.child("clientes").childByAutoId()
-        cliente_id.setValue(["nome": self.inputName.text])
-        
-        cliente_id.observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let username = value?["nome"] as? String ?? ""
-            print(username)
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
-        self.dbref.child("produtos").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get product value
-            if (snapshot.hasChild(self.inputCode.text!)) {
-                print("PRODUTO EXISTE")
-                self.performSegue(withIdentifier: "moveToChat", sender: self)
-            } else {
-                print("PRODUTO NÃO EXISTE")
-                self.present(alertCode, animated: true, completion: nil)
+        if dadosValidos {
+            if let code = self.inputCode.text {
+                if code.count < 4 {
+                    self.present(alertCode, animated: true, completion: nil)
+                    dadosValidos = false
+                }
             }
-        }) { (error) in
-            print(error.localizedDescription)
+        }
+
+        
+        //PROCESSAMENTO DOS DADOS
+        if dadosValidos {
+            self.dbref.child("produtos").observeSingleEvent(of: .value, with: { (snapshot) in
+                // OBTENCAO DO PRODUTO
+                if (snapshot.hasChild(self.inputCode.text!)) {
+                    print("PRODUTO EXISTE")
+                    self.produto_id = snapshot.ref.child(self.inputCode.text!)
+                    if self.cliente_id == nil {
+                        self.cliente_id = self.dbref.child("clientes").childByAutoId()
+                        self.cliente_id.setValue(["nome": self.inputName.text])
+                        print("Novo cliente adicionado")
+                    }
+                    if dadosValidos {
+                        /*self.dbref.child("conversas").queryOrdered(byChild: "cliente_id").queryEqual(toValue: <#T##Any?#>)*/
+                        self.cliente_id.observeSingleEvent(of: .value, with: { (snapshot) in
+                            // OBTENCAO DO CLIENTE
+                            let value = snapshot.value as? NSDictionary
+                            let username = value?["nome"] as? String ?? ""
+                            print("Usuário: \(username)")
+                        }) { (error) in
+                            print(error.localizedDescription)
+                            dadosValidos = false
+                        }
+                        
+                        
+                        
+                        //self.performSegue(withIdentifier: "moveToChat", sender: self)
+                    }
+                } else {
+                    print("PRODUTO NÃO EXISTE")
+                    dadosValidos = false
+                    self.present(alertCodeNone, animated: true, completion: nil)
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+                dadosValidos = false
+            }
+            
+
         }
     }
     
