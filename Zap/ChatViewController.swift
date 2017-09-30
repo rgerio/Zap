@@ -17,8 +17,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var sendButton: UIButton!
     
     var messages = [String]()
-    var cliente_id: DatabaseReference!
-    var produto_id: DatabaseReference!
+    var conversa_id: DatabaseReference!
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.textFieldChatClient.resignFirstResponder()

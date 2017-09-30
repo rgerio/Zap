@@ -95,8 +95,8 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "moveToChat") {
             let vc = segue.destination as! ChatViewController
-            vc.cliente_id = self.cliente_id
-            vc.produto_id = self.produto_id
+            vc.conversa_id = nil
+            //vc.produto_id = self.produto_id
         }
     }
     
