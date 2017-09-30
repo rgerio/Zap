@@ -11,17 +11,28 @@ import UIKit
 
 
 class Produto {
-    var loja: String
-    var vendedor: String
+    var codigo: String // chave primária
+    var lojaId: String
     var nome: String
     var descricao:String
     var imagem: UIImage
     
-    init(Loja loja:String,Vendedor vendedor:String,Nome nome:String,Descricao descricao:String,Imagem imagem: UIImage){
-        self.loja = loja
-        self.vendedor = vendedor
+    init(Nome nome:String,LojaId lojaId:String,Descricao descricao:String ,Imagem imagem: UIImage){
+        self.codigo = ""
+        self.lojaId = lojaId
         self.nome = nome
         self.descricao = descricao
         self.imagem = imagem
     }
+    
+    func gerarCodigo() -> String {
+        
+        self.codigo = "XC45"
+        
+        return "XC45"
+    }
 }
+
+
+
+

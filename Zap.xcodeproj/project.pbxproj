@@ -28,6 +28,10 @@
 		B4616073F3E418B75650688D /* Pods_ZapUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5355450B9028FDA3596346AD /* Pods_ZapUITests.framework */; };
 		E4152A511F7E92FC0010A0B5 /* Produto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4152A501F7E92FC0010A0B5 /* Produto.swift */; };
 		E4152A571F7EC4580010A0B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4152A561F7EC44B0010A0B5 /* GoogleService-Info.plist */; };
+		E4152A5D1F7FCFC70010A0B5 /* Vendedor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4152A5C1F7FCFC70010A0B5 /* Vendedor.swift */; };
+		E4152A5F1F7FCFEA0010A0B5 /* Loja.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4152A5E1F7FCFEA0010A0B5 /* Loja.swift */; };
+		E4152A611F7FD0050010A0B5 /* Cliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4152A601F7FD0050010A0B5 /* Cliente.swift */; };
+		E4152A631F7FD01C0010A0B5 /* Conversa.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4152A621F7FD01C0010A0B5 /* Conversa.swift */; };
 		E45960B01F7E835800BDC3AC /* GenerateProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45960AF1F7E835800BDC3AC /* GenerateProductViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +86,10 @@
 		E4152A4F1F7E8D930010A0B5 /* Zap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zap.entitlements; sourceTree = "<group>"; };
 		E4152A501F7E92FC0010A0B5 /* Produto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Produto.swift; sourceTree = "<group>"; };
 		E4152A561F7EC44B0010A0B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E4152A5C1F7FCFC70010A0B5 /* Vendedor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendedor.swift; sourceTree = "<group>"; };
+		E4152A5E1F7FCFEA0010A0B5 /* Loja.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loja.swift; sourceTree = "<group>"; };
+		E4152A601F7FD0050010A0B5 /* Cliente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cliente.swift; sourceTree = "<group>"; };
+		E4152A621F7FD01C0010A0B5 /* Conversa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversa.swift; sourceTree = "<group>"; };
 		E45960AF1F7E835800BDC3AC /* GenerateProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateProductViewController.swift; sourceTree = "<group>"; };
 		E532F6FB01DD804B9AEDA5E2 /* Pods-ZapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapTests/Pods-ZapTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +189,10 @@
 				107E2E601F7C3130005566E6 /* InputClientInfo.swift */,
 				E45960AF1F7E835800BDC3AC /* GenerateProductViewController.swift */,
 				E4152A501F7E92FC0010A0B5 /* Produto.swift */,
+				E4152A5C1F7FCFC70010A0B5 /* Vendedor.swift */,
+				E4152A5E1F7FCFEA0010A0B5 /* Loja.swift */,
+				E4152A601F7FD0050010A0B5 /* Cliente.swift */,
+				E4152A621F7FD01C0010A0B5 /* Conversa.swift */,
 			);
 			path = Zap;
 			sourceTree = "<group>";
@@ -517,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77684F951F72FC7200557F24 /* ViewController.swift in Sources */,
+				E4152A5F1F7FCFEA0010A0B5 /* Loja.swift in Sources */,
 				100978F21F7582A800174486 /* ProductsCollectionViewController.swift in Sources */,
 				109B44541F7986A10024909A /* InputCodeViewController.swift in Sources */,
 				77684F931F72FC7200557F24 /* AppDelegate.swift in Sources */,
@@ -527,7 +540,10 @@
 				771EC93E1F7C214D00BE97BC /* ChatTableViewCell.swift in Sources */,
 				E4152A511F7E92FC0010A0B5 /* Produto.swift in Sources */,
 				E45960B01F7E835800BDC3AC /* GenerateProductViewController.swift in Sources */,
+				E4152A631F7FD01C0010A0B5 /* Conversa.swift in Sources */,
+				E4152A611F7FD0050010A0B5 /* Cliente.swift in Sources */,
 				771EC93C1F7C1FE500BE97BC /* ChatViewController.swift in Sources */,
+				E4152A5D1F7FCFC70010A0B5 /* Vendedor.swift in Sources */,
 				1087D64B1F757CBD00AB3B40 /* StoreTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
