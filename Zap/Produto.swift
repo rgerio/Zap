@@ -15,21 +15,30 @@ class Produto {
     var lojaId: String
     var nome: String
     var descricao:String
-    var imagem: UIImage
+   // var imagem: UIImage
     
-    init(Nome nome:String,LojaId lojaId:String,Descricao descricao:String ,Imagem imagem: UIImage){
+    init(Nome nome:String,LojaId lojaId:String,Descricao descricao:String ){
         self.codigo = ""
         self.lojaId = lojaId
         self.nome = nome
         self.descricao = descricao
-        self.imagem = imagem
+       // self.imagem = imagem
     }
-    
+  
     func gerarCodigo() -> String {
         
-        self.codigo = "XC45"
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
         
-        return "XC45"
+        var randomString = ""
+        
+        for _ in 0 ..< 4 {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
     }
 }
 

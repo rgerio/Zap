@@ -12,21 +12,20 @@ import Firebase
 class GenerateProductViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate{
 // UITextViewDelegate
     //let rootRef = database().reference()
-    var ref: DatabaseReference! = Database.database().reference()
-    
-    @IBOutlet weak var nomeLojaTextField: UITextField!
-    @IBOutlet weak var nomeVendedorTextField: UITextField!
+    var dbref: DatabaseReference!
+    let defaults = UserDefaults.standard
+   
     @IBOutlet weak var nomeProduoTextField: UITextField!
     @IBOutlet weak var descricaoTextView: UITextView!
+    @IBOutlet weak var imagemProdutoUIImageView: UIImageView!
     
-    
+    var codigo = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        nomeLojaTextField.delegate = self
-        nomeVendedorTextField.delegate = self
         nomeProduoTextField.delegate = self
         descricaoTextView.delegate = self
         drawDescricaoTextView()
+        dbref = Database.database().reference()
     
 
         // Do any additional setup after loading the view.
@@ -58,7 +57,54 @@ class GenerateProductViewController: UIViewController,UITextFieldDelegate,UIText
     }
 
     
-  
+    @IBAction func gerarCodigo(_ sender: Any) {
+        let alertEmpty = UIAlertController(title: "Campos não preenchidos", message: "Preencha os campos! Por favor.", preferredStyle: UIAlertControllerStyle.alert)
+        alertEmpty.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)) //gerenciando as notificaçoes
+       
+      
+ 
+        if  let nomeProduto = nomeProduoTextField.text,
+            let descricao = descricaoTextView.text, !nomeProduto.isEmpty
+        {
+             let vendedores = self.dbref.child("vendedores")
+             let produtos = self.dbref.child("produtos")
+            vendedores.observeSingleEvent(of: .value, with: { (snapshot) in
+               
+                let produto =  Produto(Nome: nomeProduto,LojaId: self.defaults.string(forKey: "LojaKey")!, Descricao: descricao)
+                
+                /*
+                while(!snapshot.hasChild(produto.codigo)){
+ */
+                  produto.codigo = produto.gerarCodigo()
+                    print(produto.codigo)
+                    if(!snapshot.hasChild(produto.codigo)){
+                        
+                       produtos.child(produto.codigo).setValue(["nome": produto.nome,"descricao":produto.descricao,"imagem":"nao","loja_id":produto.lojaId])
+                        
+                         self.codigo = produto.codigo
+                        
+                         self.performSegue(withIdentifier: "generateCode", sender: self)
+                }
+                
+                
+            })
+        
+ 
+        }else{
+            
+            self.present(alertEmpty, animated: true, completion: nil)
+            
+        }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "generateCode") {
+            let vc = segue.destination as! ShowCodeViewController
+            vc.codigo = self.codigo
+        }
+    }
+    
 
     /*
     // MARK: - Navigation

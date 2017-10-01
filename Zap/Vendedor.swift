@@ -13,12 +13,12 @@ class Vendedor {
     var id: String // chave primária
     var nome: String
     var lojaId: String
-    var ocupado:String
-    init(Id id:String,Nome nome:String,LojaId lojaId:String,Ocupado ocupado:String){
+    var disponivel:String
+    init(Id id:String,Nome nome:String,LojaId lojaId:String,Disponivel disponivel:String){
         self.id = id
         self.nome = nome
         self.lojaId = lojaId
-        self.ocupado = ocupado
+        self.disponivel = disponivel
     }
     
 }
