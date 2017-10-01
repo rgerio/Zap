@@ -335,7 +335,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AsR-2F-PYW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1417" y="3072"/>
+            <point key="canvasLocation" x="1100" y="3062"/>
         </scene>
         <!--Show Code View Controller-->
         <scene sceneID="WE7-oQ-fYv">
@@ -386,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOk-an-o05" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2094" y="3072"/>
+            <point key="canvasLocation" x="1865" y="3062"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="NiL-Qa-WJ0">
@@ -691,7 +691,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Conversas" id="gX1-Jn-QZn"/>
                     <connections>
-                        <segue destination="TbC-4C-u8z" kind="show" identifier="chatSeller" id="dra-1z-Nzs"/>
+                        <segue destination="sEo-fD-0a9" kind="show" identifier="chatSeller" id="hl2-Ww-e7V"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7kf-u2-wvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -724,7 +724,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpd-ul-VzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2282" y="2310"/>
+            <point key="canvasLocation" x="3081" y="2227"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="f9l-3r-3lL">
@@ -808,8 +808,8 @@
         <image name="user" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8eM-pq-4gY"/>
         <segue reference="SFp-Mv-PXb"/>
         <segue reference="JRc-CL-EMm"/>
+        <segue reference="hl2-Ww-e7V"/>
     </inferredMetricsTieBreakers>
 </document>
