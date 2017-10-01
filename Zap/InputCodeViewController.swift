@@ -17,6 +17,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     var cliente_id: DatabaseReference!
     var produto_id: DatabaseReference!
     var conversa_id: DatabaseReference!
+    var username = ""
     
     @IBOutlet weak var inputNameLabel: UILabel!
     @IBOutlet weak var inputName: UITextField!
@@ -103,8 +104,8 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                         self.cliente_id.observeSingleEvent(of: .value, with: { (snapshot) in
                             // DEBUG DE OBTENCAO DO CLIENTE
                             let value = snapshot.value as? NSDictionary
-                            let username = value?["nome"] as? String ?? ""
-                            print("USUÁRIO: \(username)")
+                            self.username = value?["nome"] as? String ?? ""
+                            print("USUÁRIO: \(self.username)")
                         }) { (error) in
                             print(error.localizedDescription)
                             dadosValidos = false
@@ -126,6 +127,8 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
         if (segue.identifier == "moveToChat") {
             let vc = segue.destination as! ChatViewController
             vc.conversa_id = self.conversa_id
+            vc.senderId = self.cliente_id.key
+            vc.senderDisplayName = self.username
         }
     }
     
