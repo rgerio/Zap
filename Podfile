@@ -22,4 +22,5 @@ target 'Zap' do
  pod 'Firebase/Storage'
  pod 'IQKeyboardManagerSwift'
  pod 'Braintree', '~> 3.9'
+ pod ‘JSQMessagesViewController’
 end
