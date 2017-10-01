@@ -21,4 +21,5 @@ target 'Zap' do
  pod ‘Firebase/Auth’
  pod ‘Firebase/Storage’
  pod 'IQKeyboardManagerSwift'
+ pod 'Braintree', '~> 3.9'
 end

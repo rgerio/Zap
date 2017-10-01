@@ -35,6 +35,7 @@
 		E45960B01F7E835800BDC3AC /* GenerateProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45960AF1F7E835800BDC3AC /* GenerateProductViewController.swift */; };
 		E461431C1F7FDA3600155219 /* CadastrarVendedorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E461431B1F7FDA3600155219 /* CadastrarVendedorViewController.swift */; };
 		E475E7FA1F812C4000571CAD /* ShowCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475E7F91F812C3F00571CAD /* ShowCodeViewController.swift */; };
+		E475E7FC1F816E2200571CAD /* BrainTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475E7FB1F816E2200571CAD /* BrainTreeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		E45960AF1F7E835800BDC3AC /* GenerateProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateProductViewController.swift; sourceTree = "<group>"; };
 		E461431B1F7FDA3600155219 /* CadastrarVendedorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastrarVendedorViewController.swift; sourceTree = "<group>"; };
 		E475E7F91F812C3F00571CAD /* ShowCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCodeViewController.swift; sourceTree = "<group>"; };
+		E475E7FB1F816E2200571CAD /* BrainTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainTreeViewController.swift; sourceTree = "<group>"; };
 		E532F6FB01DD804B9AEDA5E2 /* Pods-ZapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZapTests/Pods-ZapTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,6 +181,7 @@
 				77684F921F72FC7200557F24 /* AppDelegate.swift */,
 				77684F941F72FC7200557F24 /* ViewController.swift */,
 				77684F961F72FC7200557F24 /* Main.storyboard */,
+				E475E7FB1F816E2200571CAD /* BrainTreeViewController.swift */,
 				771EC93B1F7C1FE500BE97BC /* ChatViewController.swift */,
 				771EC93D1F7C214D00BE97BC /* ChatTableViewCell.swift */,
 				100978F31F75858C00174486 /* ProductCollectionViewCell.swift */,
@@ -508,6 +511,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Zap/Pods-Zap-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
@@ -516,6 +520,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Braintree.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
@@ -545,6 +550,7 @@
 				1087D6491F7579E500AB3B40 /* StoreTableViewController.swift in Sources */,
 				100978F41F75858C00174486 /* ProductCollectionViewCell.swift in Sources */,
 				771EC93E1F7C214D00BE97BC /* ChatTableViewCell.swift in Sources */,
+				E475E7FC1F816E2200571CAD /* BrainTreeViewController.swift in Sources */,
 				E4152A511F7E92FC0010A0B5 /* Produto.swift in Sources */,
 				E45960B01F7E835800BDC3AC /* GenerateProductViewController.swift in Sources */,
 				E4152A631F7FD01C0010A0B5 /* Conversa.swift in Sources */,
