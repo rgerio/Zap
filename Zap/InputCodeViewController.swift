@@ -17,6 +17,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     var produto_id: DatabaseReference!
     var conversa_id: DatabaseReference!
     
+    @IBOutlet weak var inputNameLabel: UILabel!
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputCode: UITextField!
     @IBAction func buttonEnter(_ sender: Any?) {
@@ -127,14 +128,23 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        inputName.delegate = self
-        inputName.tag = 0
-        inputCode.delegate = self
-        inputCode.tag = 1
+        self.inputName.delegate = self
+        self.inputName.tag = 0
+        self.inputCode.delegate = self
+        self.inputCode.tag = 1
         
-        dbref = Database.database().reference()
+        self.dbref = Database.database().reference()
+        
+        
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if self.cliente_id != nil {
+            self.inputName.isHidden = true
+            self.inputNameLabel.isHidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
