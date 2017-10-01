@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         print("QUAL SERÁ O TIPO DE PESSOA?")
         if savedTipoAcesso != nil {
             print("JÁ SEI O TIPO DE PESSOA")
-            performSegue(withIdentifier: "segueCons", sender: self)
+            performSegue(withIdentifier: savedTipoAcesso!, sender: self)
         }
     }
 
