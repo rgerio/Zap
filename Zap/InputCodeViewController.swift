@@ -11,6 +11,7 @@ import FirebaseDatabase
 
 class InputCodeViewController: UIViewController, UITextFieldDelegate {
     
+    let defaults = UserDefaults.standard
     var dbref: DatabaseReference!
 
     var cliente_id: DatabaseReference!
@@ -35,7 +36,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
         var dadosValidos = true
         if dadosValidos {
             if let name = self.inputName.text {
-                if name == "" {
+                if self.inputName.isHidden == false && name == "" {
                     self.present(alertName, animated: true, completion: nil)
                     dadosValidos = false
                 }
@@ -63,6 +64,8 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                         self.cliente_id = self.dbref.child("clientes").childByAutoId()
                         self.cliente_id.setValue(["nome": self.inputName.text])
                         print("NOVO CLIENTE ADICIONADO")
+                        self.defaults.set(self.cliente_id.key, forKey: "Cliente")
+                        print("NOVO CLIENTE GRAVADO")
                     }
                     if dadosValidos {
                         let conversasCliente = self.dbref.child("conversas").queryOrdered(byChild: "cliente_id").queryEqual(toValue: self.cliente_id.key)
@@ -141,6 +144,12 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let savedCliente = self.defaults.object(forKey: "Cliente") as? String
+        if self.cliente_id == nil && savedCliente != nil {
+            self.cliente_id = self.dbref.child(savedCliente!)
+            print("CLIENTE CARREGADO")
+        }
+        
         if self.cliente_id != nil {
             self.inputName.isHidden = true
             self.inputNameLabel.isHidden = true
