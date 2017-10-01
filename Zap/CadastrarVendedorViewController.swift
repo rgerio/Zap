@@ -10,21 +10,13 @@ import UIKit
 import FirebaseDatabase
 class CadastrarVendedorViewController: UIViewController {
     var dbref: DatabaseReference!
-   
     let defaults = UserDefaults.standard
-    
     @IBOutlet weak var nomeLojaTextField: UITextField!
-    
     @IBOutlet weak var nomeVendedorTextField: UITextField!
-    
-    
     @IBOutlet weak var chaveLojaTextField: UITextField!
 
-    
-    
-  //NSUserDefaults.
-   // defaults.s
-    override func viewDidLoad() {
+
+     override func viewDidLoad() {
         super.viewDidLoad()
         dbref = Database.database().reference()
         
@@ -34,8 +26,7 @@ class CadastrarVendedorViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+  
     @IBAction func cadastrarButton(_ sender: UIButton) {
         //alertas
         let alertEmpty = UIAlertController(title: "Campos não preenchidos", message: "Preencha os campos! Por favor.", preferredStyle: UIAlertControllerStyle.alert)
@@ -84,13 +75,9 @@ class CadastrarVendedorViewController: UIViewController {
             }else{
                 self.present(alertNameInvalidate, animated: true, completion: nil)
             }
-          
-        
+   
          })
-                
-            
-
-        }else{
+       }else{
            self.present(alertEmpty, animated: true, completion: nil)
         }
     }

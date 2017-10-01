@@ -10,8 +10,7 @@ import UIKit
 import Firebase
 
 class GenerateProductViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate{
-// UITextViewDelegate
-    //let rootRef = database().reference()
+    
     var dbref: DatabaseReference!
     let defaults = UserDefaults.standard
    
@@ -26,9 +25,7 @@ class GenerateProductViewController: UIViewController,UITextFieldDelegate,UIText
         descricaoTextView.delegate = self
         drawDescricaoTextView()
         dbref = Database.database().reference()
-    
-
-        // Do any additional setup after loading the view.
+   
     }
     
     func drawDescricaoTextView(){
@@ -56,13 +53,10 @@ class GenerateProductViewController: UIViewController,UITextFieldDelegate,UIText
     return true
     }
 
-    
     @IBAction func gerarCodigo(_ sender: Any) {
         let alertEmpty = UIAlertController(title: "Campos não preenchidos", message: "Preencha os campos! Por favor.", preferredStyle: UIAlertControllerStyle.alert)
         alertEmpty.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)) //gerenciando as notificaçoes
        
-      
- 
         if  let nomeProduto = nomeProduoTextField.text,
             let descricao = descricaoTextView.text, !nomeProduto.isEmpty
         {
@@ -71,11 +65,8 @@ class GenerateProductViewController: UIViewController,UITextFieldDelegate,UIText
             vendedores.observeSingleEvent(of: .value, with: { (snapshot) in
                
                 let produto =  Produto(Nome: nomeProduto,LojaId: self.defaults.string(forKey: "LojaKey")!, Descricao: descricao)
-                
-                /*
-                while(!snapshot.hasChild(produto.codigo)){
- */
-                  produto.codigo = produto.gerarCodigo()
+
+                produto.codigo = produto.gerarCodigo()
                     print(produto.codigo)
                     if(!snapshot.hasChild(produto.codigo)){
                         
@@ -85,11 +76,9 @@ class GenerateProductViewController: UIViewController,UITextFieldDelegate,UIText
                         
                          self.performSegue(withIdentifier: "generateCode", sender: self)
                 }
-                
-                
+           
             })
-        
- 
+
         }else{
             
             self.present(alertEmpty, animated: true, completion: nil)
@@ -105,15 +94,4 @@ class GenerateProductViewController: UIViewController,UITextFieldDelegate,UIText
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
