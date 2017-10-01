@@ -84,7 +84,7 @@
                         <outlet property="inputCode" destination="bEa-UF-IiI" id="GYh-RO-hLS"/>
                         <outlet property="inputName" destination="KhX-6f-DOw" id="D5B-mu-LCa"/>
                         <outlet property="inputNameLabel" destination="7D7-si-BlE" id="AbY-1I-SY0"/>
-                        <segue destination="Q29-2Q-xVQ" kind="show" identifier="moveToChat" id="3gx-Md-bBY"/>
+                        <segue destination="sEo-fD-0a9" kind="show" identifier="moveToChat" id="VuA-SE-0Sf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XpO-h7-0Yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -164,6 +164,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylE-w6-XVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3081" y="1533"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="HVc-kP-kgc">
+            <objects>
+                <viewController id="sEo-fD-0a9" customClass="ChatViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lE5-Le-Nh1"/>
+                        <viewControllerLayoutGuide type="bottom" id="KXF-bC-kES"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kNI-Id-ngW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c73-Jm-eTU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1100" y="1564"/>
         </scene>

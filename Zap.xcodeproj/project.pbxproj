@@ -17,7 +17,6 @@
 		109B44541F7986A10024909A /* InputCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B44531F7986A10024909A /* InputCodeViewController.swift */; };
 		355AC4BAA0DB1BE8A38514C2 /* Pods_Zap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B50D550C4005AA3E340DA190 /* Pods_Zap.framework */; };
 		771EC93C1F7C1FE500BE97BC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771EC93B1F7C1FE500BE97BC /* ChatViewController.swift */; };
-		771EC93E1F7C214D00BE97BC /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771EC93D1F7C214D00BE97BC /* ChatTableViewCell.swift */; };
 		77684F931F72FC7200557F24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77684F921F72FC7200557F24 /* AppDelegate.swift */; };
 		77684F951F72FC7200557F24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77684F941F72FC7200557F24 /* ViewController.swift */; };
 		77684F981F72FC7200557F24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77684F961F72FC7200557F24 /* Main.storyboard */; };
@@ -65,7 +64,6 @@
 		5355450B9028FDA3596346AD /* Pods_ZapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70A1575C20789EF470AFFBDB /* Pods-ZapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZapTests/Pods-ZapTests.release.xcconfig"; sourceTree = "<group>"; };
 		771EC93B1F7C1FE500BE97BC /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		771EC93D1F7C214D00BE97BC /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		77684F8F1F72FC7200557F24 /* Zap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77684F921F72FC7200557F24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77684F941F72FC7200557F24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 				77684F941F72FC7200557F24 /* ViewController.swift */,
 				77684F961F72FC7200557F24 /* Main.storyboard */,
 				771EC93B1F7C1FE500BE97BC /* ChatViewController.swift */,
-				771EC93D1F7C214D00BE97BC /* ChatTableViewCell.swift */,
 				100978F31F75858C00174486 /* ProductCollectionViewCell.swift */,
 				100978F11F7582A800174486 /* ProductsCollectionViewController.swift */,
 				1087D64A1F757CBD00AB3B40 /* StoreTableViewCell.swift */,
@@ -505,6 +502,8 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -513,6 +512,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -537,7 +538,6 @@
 				107E2E611F7C3130005566E6 /* InputClientInfo.swift in Sources */,
 				1087D6491F7579E500AB3B40 /* StoreTableViewController.swift in Sources */,
 				100978F41F75858C00174486 /* ProductCollectionViewCell.swift in Sources */,
-				771EC93E1F7C214D00BE97BC /* ChatTableViewCell.swift in Sources */,
 				E4152A511F7E92FC0010A0B5 /* Produto.swift in Sources */,
 				E45960B01F7E835800BDC3AC /* GenerateProductViewController.swift in Sources */,
 				E4152A631F7FD01C0010A0B5 /* Conversa.swift in Sources */,
