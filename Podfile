@@ -23,4 +23,5 @@ target 'Zap' do
  pod 'IQKeyboardManagerSwift'
  pod 'Braintree', '~> 3.9'
  pod ‘JSQMessagesViewController’
+
 end
