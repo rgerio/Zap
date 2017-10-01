@@ -12,10 +12,16 @@ import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController {
     var conversa_id: DatabaseReference!
+    lazy var messageRef: DatabaseReference! = self.conversa_id.child("mensagens")
+    var newMessageRefHandle: DatabaseHandle!
+    var firebaseMessages = [Mensagens]()
     var messages = [JSQMessage]()
     
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
+    
+    var vendorname: String!
+    var lastSize = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +86,44 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
     
+    private func observeMessages() {
+
+        newMessageRefHandle = self.messageRef.observe(.value, with: { (snapshot) -> Void in
+            self.firebaseMessages = snapshot.value as! [Mensagens]
+            var counter = 0
+            for mensagem in self.firebaseMessages {
+                if let id = mensagem.id as String!, let data = mensagem.data as String!, let vendedorId = mensagem.vendedorId as String!, let texto = mensagem.texto as String! {
+                    counter += 1
+                    if (counter > self.lastSize) {
+                        self.lastSize += 1
+                        if (vendedorId == self.senderId) {
+                            self.addMessage(withId: id, name: self.vendorname, text: texto)
+                        }
+                        else {
+                            self.addMessage(withId: id, name: self.senderDisplayName, text: texto)
+                        }
+                    }
+                } else {
+                    print("Erro! Mensagem em formato desconhecido!")
+                }
+            }
+            self.finishReceivingMessage()
+        })
+    }
     
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        let itemRef = messageRef.childByAutoId() // 1
+        let messageItem = [ // 2
+            "senderId": senderId!,
+            "senderName": senderDisplayName!,
+            "text": text!,
+            ]
+        
+        itemRef.setValue(messageItem) // 3
+        
+        JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
+        
+        finishSendingMessage() // 5
+    }
     
 }

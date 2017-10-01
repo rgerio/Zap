@@ -18,6 +18,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     var produto_id: DatabaseReference!
     var conversa_id: DatabaseReference!
     var username = ""
+    var vendorname = ""
     
     @IBOutlet weak var inputNameLabel: UILabel!
     @IBOutlet weak var inputName: UITextField!
@@ -129,6 +130,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
             vc.conversa_id = self.conversa_id
             vc.senderId = self.cliente_id.key
             vc.senderDisplayName = self.username
+            vc.vendorname = self.vendorname
         }
     }
     
