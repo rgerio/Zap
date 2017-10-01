@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-599" y="1561"/>
         </scene>
-        <!--Informações do Cliente-->
+        <!--Nova Conversa-->
         <scene sceneID="DSs-xM-Jdm">
             <objects>
                 <viewController id="tBX-aw-iw9" customClass="InputCodeViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,38 +38,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7td-Qw-bVI">
-                                <rect key="frame" x="127" y="522" width="120" height="65"/>
+                                <rect key="frame" x="127" y="505" width="120" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Entrar"/>
                                 <connections>
-                                    <action selector="buttonEnter:" destination="tBX-aw-iw9" eventType="touchUpInside" id="yJm-bk-sY3"/>
-                                    <segue destination="Q29-2Q-xVQ" kind="show" identifier="moveToChat" id="tqv-91-TBX"/>
+                                    <action selector="buttonEnter:" destination="tBX-aw-iw9" eventType="touchUpInside" id="Js6-oH-vUI"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Meu nome é" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KhX-6f-DOw" customClass="InputClientInfo" customModule="Zap" customModuleProvider="target">
-                                <rect key="frame" x="16" y="173" width="343" height="40"/>
+                                <rect key="frame" x="16" y="163" width="343" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="name"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7D7-si-BlE">
-                                <rect key="frame" x="103" y="130" width="171" height="41"/>
+                                <rect key="frame" x="103" y="120" width="171" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="bezel" placeholder="- - - -" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEa-UF-IiI" customClass="InputClientInfo" customModule="Zap" customModuleProvider="target">
-                                <rect key="frame" x="103" y="376" width="171" height="64"/>
+                                <rect key="frame" x="103" y="306" width="171" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="go"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Código do produto" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEI-BB-Uvr">
-                                <rect key="frame" x="96" y="327" width="182" height="41"/>
+                                <rect key="frame" x="96" y="271" width="182" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -78,13 +77,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Informações do Cliente" id="StU-bM-yE9">
+                    <navigationItem key="navigationItem" title="Nova Conversa" id="StU-bM-yE9">
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="aEi-yg-pDd"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="buttonEnterOutlet" destination="7td-Qw-bVI" id="rky-gn-yNA"/>
                         <outlet property="inputCode" destination="bEa-UF-IiI" id="GYh-RO-hLS"/>
                         <outlet property="inputName" destination="KhX-6f-DOw" id="D5B-mu-LCa"/>
+                        <outlet property="inputNameLabel" destination="7D7-si-BlE" id="AbY-1I-SY0"/>
+                        <segue destination="sEo-fD-0a9" kind="show" identifier="moveToChat" id="VuA-SE-0Sf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XpO-h7-0Yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -164,6 +164,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylE-w6-XVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3081" y="1533"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="HVc-kP-kgc">
+            <objects>
+                <viewController id="sEo-fD-0a9" customClass="ChatViewController" customModule="Zap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lE5-Le-Nh1"/>
+                        <viewControllerLayoutGuide type="bottom" id="KXF-bC-kES"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kNI-Id-ngW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c73-Jm-eTU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1100" y="1564"/>
         </scene>
@@ -783,8 +801,8 @@
                     <connections>
                         <outlet property="consButton" destination="YpK-2D-giC" id="2gq-B3-3r5"/>
                         <outlet property="selButton" destination="wxE-jg-7gf" id="yHp-jO-c0b"/>
-                        <segue destination="ied-eM-epH" kind="show" identifier="segueSel" id="4Wi-nq-9fz"/>
-                        <segue destination="AXx-wp-3EA" kind="show" identifier="segueCons" id="OY3-XB-RRV"/>
+                        <segue destination="AXx-wp-3EA" kind="show" identifier="segueCons" id="yuQ-PR-lxd"/>
+                        <segue destination="ied-eM-epH" kind="show" identifier="segueSel" id="TkG-M1-SCD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U55-cl-RHl" sceneMemberID="firstResponder"/>
@@ -795,7 +813,7 @@
     <resources>
         <image name="AddImage" width="225" height="225"/>
         <image name="add_image1600.png" width="1600" height="1600"/>
-        <image name="girl-with-shopping-bags-6-by-Vexels" width="256" height="256"/>
+        <image name="girl-with-shopping-bags-6-by-Vexels" width="512" height="512"/>
         <image name="imagemChamada" width="720" height="1280"/>
         <image name="imagemChat" width="720" height="1280"/>
         <image name="productImage0" width="1035" height="1200"/>

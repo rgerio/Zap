@@ -7,61 +7,79 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import JSQMessagesViewController
 
-class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    @IBOutlet weak var textFieldChatClient: UITextField!
+class ChatViewController: JSQMessagesViewController {
+    var conversa_id: DatabaseReference!
+    var messages = [JSQMessage]()
     
-    @IBOutlet weak var tableView: UITableView!
+    lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
+    lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
-    @IBOutlet var sendButton: UIButton!
-    
-    var messages = [String]()
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.textFieldChatClient.resignFirstResponder()
-        return true
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
+        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+        title = "Zap"
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.messages.count
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // messages from someone else
+        addMessage(withId: "foo", name: "Mr.Bolt", text: "João, como está indo o chat?")
+        // messages sent from local sender
+        addMessage(withId: senderId, name: "Me", text: "Oi gente!")
+        addMessage(withId: senderId, name: "Me", text: "Tá saindo!")
+        // animates the receiving of a new message on the view
+        finishReceivingMessage()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "IncomingCell", for: indexPath) as! ChatTableViewCell
-        cell.textLabel?.text = self.messages[indexPath.row]
-        cell.textLabel?.textAlignment = .right
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+        return messages[indexPath.item]
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        let message = messages[indexPath.item]
+        
+        if message.senderId == senderId {
+            cell.textView?.textColor = UIColor.white
+        } else {
+            cell.textView?.textColor = UIColor.black
+        }
         return cell
     }
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
+        let bubbleImageFactory = JSQMessagesBubbleImageFactory()
+        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     }
     
-    @IBAction func pressedSendButton(_ sender: Any) {
-        let str = self.textFieldChatClient.text
-        self.messages.append(str!)
-        self.textFieldChatClient.text = ""
-        self.tableView?.reloadData()
-        self.textFieldChatClient.resignFirstResponder()
+    private func setupIncomingBubble() -> JSQMessagesBubbleImage {
+        let bubbleImageFactory = JSQMessagesBubbleImageFactory()
+        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+        let message = messages[indexPath.item]
+        if message.senderId == senderId {
+            return outgoingBubbleImageView
+        } else {
+            return incomingBubbleImageView
+        }
     }
-    */
-
+    
+    private func addMessage(withId id: String, name: String, text: String) {
+        if let message = JSQMessage(senderId: id, displayName: name, text: text) {
+            messages.append(message)
+        }
+    }
+    
+    
+    
 }
