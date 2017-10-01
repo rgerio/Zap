@@ -97,6 +97,7 @@ class CadastrarVendedorViewController: UIViewController {
                     print("VENDEDOR EXISTE")
                 }
                 
+                self.defaults.set("segueSelExiste", forKey: "TipoAcesso")
                 self.performSegue(withIdentifier: "moveToChatVendedor", sender: self)
                 
             }) { (error) in
@@ -106,11 +107,5 @@ class CadastrarVendedorViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "moveToChatVendedor") {
-            let vc = segue.destination as! StoreTableViewController
-            vc.vendedor_id = self.vendedor_id
-        }
-    }
     
 }
