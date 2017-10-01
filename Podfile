@@ -16,10 +16,11 @@ target 'Zap' do
     inherit! :search_paths
     # Pods for testing
   end
- pod ‘Firebase/Core’
- pod ‘Firebase/Database’
- pod ‘Firebase/Auth’
- pod ‘Firebase/Storage’
+ pod 'Firebase/Core'
+ pod 'Firebase/Database'
+ pod 'Firebase/Auth'
+ pod 'Firebase/Storage'
  pod 'IQKeyboardManagerSwift'
- pod ‘JSQMessagesViewController’ 
+ pod 'JSQMessagesViewController'
+ pod 'JSQSystemSoundPlayer'
 end

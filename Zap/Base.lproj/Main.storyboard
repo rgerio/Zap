@@ -742,8 +742,8 @@
                     <connections>
                         <outlet property="consButton" destination="YpK-2D-giC" id="2gq-B3-3r5"/>
                         <outlet property="selButton" destination="wxE-jg-7gf" id="yHp-jO-c0b"/>
-                        <segue destination="ied-eM-epH" kind="show" identifier="segueSel" id="4Wi-nq-9fz"/>
-                        <segue destination="AXx-wp-3EA" kind="show" identifier="segueCons" id="OY3-XB-RRV"/>
+                        <segue destination="AXx-wp-3EA" kind="show" identifier="segueCons" id="yuQ-PR-lxd"/>
+                        <segue destination="ied-eM-epH" kind="show" identifier="segueSel" id="TkG-M1-SCD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U55-cl-RHl" sceneMemberID="firstResponder"/>
