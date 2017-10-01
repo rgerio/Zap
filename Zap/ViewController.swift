@@ -19,12 +19,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         let savedTipoAcesso = self.defaults.object(forKey: "TipoAcesso") as? String
         print("QUAL SERÁ O TIPO DE PESSOA?")
         if savedTipoAcesso != nil {
             print("JÁ SEI O TIPO DE PESSOA")
-            performSegue(withIdentifier: savedTipoAcesso!, sender: self) //POR QUE NAO FUNCIONA
+            performSegue(withIdentifier: "segueCons", sender: self)
         }
     }
 
