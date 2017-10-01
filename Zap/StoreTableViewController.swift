@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class StoreTableViewController: UITableViewController {
+    
+    var vendedor_id: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Vendedor: \(self.vendedor_id.key)")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

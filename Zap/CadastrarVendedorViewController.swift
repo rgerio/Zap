@@ -8,9 +8,14 @@
 
 import UIKit
 import FirebaseDatabase
+
 class CadastrarVendedorViewController: UIViewController {
     var dbref: DatabaseReference!
     let defaults = UserDefaults.standard
+    
+    var loja_id: DatabaseReference!
+    var vendedor_id: DatabaseReference!
+    
     @IBOutlet weak var nomeLojaTextField: UITextField!
     @IBOutlet weak var nomeVendedorTextField: UITextField!
     @IBOutlet weak var chaveLojaTextField: UITextField!
@@ -28,57 +33,84 @@ class CadastrarVendedorViewController: UIViewController {
     }
   
     @IBAction func cadastrarButton(_ sender: UIButton) {
-        //alertas
-        let alertEmpty = UIAlertController(title: "Campos não preenchidos", message: "Preencha os campos! Por favor.", preferredStyle: UIAlertControllerStyle.alert)
+        //DECLARACAO DE ALERTS
+        let alertNomeLoja = UIAlertController(title: "Loja Inválida", message: "Por favor, digite o nome da loja.", preferredStyle: UIAlertControllerStyle.alert)
+        alertNomeLoja.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         
-        alertEmpty.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)) //gerenciando as notificaçoes
-       
-       let alertKeyInvalidate = UIAlertController(title: "Chave da loja inválida ", message: "Não consta no sistema! Por favor digite uma chave válida!.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertNomeVendedor = UIAlertController(title: "Vendedor Inválido", message: "Por favor, digite o nome do vendedor.", preferredStyle: UIAlertControllerStyle.alert)
+        alertNomeVendedor.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         
-        alertKeyInvalidate.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        
-        let alertNameInvalidate = UIAlertController(title: "Nome loja inválido!", message: "Preencha o nome correto da loja!", preferredStyle: UIAlertControllerStyle.alert)
-        
-        alertNameInvalidate.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        
-
-        //verificando campos vazios
-        if  let nomeLoja = nomeLojaTextField.text, let nomeVendedor = nomeVendedorTextField.text ,let chaveLoja = chaveLojaTextField.text ,!nomeLoja.isEmpty && !nomeVendedor.isEmpty && !chaveLoja.isEmpty
-         {
-         //referencias
-         let lojasRef = self.dbref.child("lojas")
-         let vendedoresRef = self.dbref.child("vendedores")
-         //abrindo observe para verificar lojas
-         lojasRef.observeSingleEvent(of: .value, with:{
-            (snapshot) in
-            if(snapshot.hasChild(chaveLoja)){
-                lojasRef.child(chaveLoja).observeSingleEvent(of: .value,with:
-                    { (snapshot) in
-                    
-                        let value = snapshot.value as? NSDictionary
-                        let nomeLojaFirebase = value?["nome"] as? String ?? ""
-                        if (nomeLojaFirebase == nomeLoja){
-                            let chave = vendedoresRef.childByAutoId()
-                            chave.setValue(["nome": nomeVendedor,"loja_id":chaveLoja,"disponivel":"sim"])
-                            
-                            self.defaults.set(chave.key, forKey: "VendedorKey")
-                            self.defaults.set(chaveLoja, forKey: "LojaKey")
-                            
-                            self.performSegue(withIdentifier: "moveToChatVendedor", sender: self)
-                            
-                        }else{
-                            
-                            self.present(alertNameInvalidate, animated: true, completion: nil)
-                        }
-                   })
-                
-            }else{
-                self.present(alertNameInvalidate, animated: true, completion: nil)
+        //VALIDACOES
+        var dadosValidos = true
+        if dadosValidos {
+            if let nomeLoja = self.nomeLojaTextField.text {
+                if nomeLoja == "" {
+                    self.present(alertNomeLoja, animated: true, completion: nil)
+                    dadosValidos = false
+                }
+            } else {
+                dadosValidos = false
             }
-   
-         })
-       }else{
-           self.present(alertEmpty, animated: true, completion: nil)
+        }
+        
+        if dadosValidos {
+            if let nomeVendedor = self.nomeVendedorTextField.text {
+                if nomeVendedor == "" {
+                    self.present(alertNomeVendedor, animated: true, completion: nil)
+                    dadosValidos = false
+                }
+            } else {
+                dadosValidos = false
+            }
+        }
+        
+        //PROCESSAMENTO DOS DADOS
+        if dadosValidos {
+            self.dbref.child("lojas").queryOrdered(byChild: "nome").queryEqual(toValue: self.nomeLojaTextField.text!).observeSingleEvent(of: .value, with: { (snapshot) in
+                var existeLoja = false
+                for snap in snapshot.children {
+                    let value = (snap as! DataSnapshot).value as? NSDictionary
+                    let nomeLoja = value?["nome"] as? String ?? ""
+                    print("Nome da loja: \(nomeLoja)")
+                    if nomeLoja == self.nomeLojaTextField.text! {
+                        print("A LOJA EXISTE")
+                        existeLoja = true
+                        self.loja_id = (snap as! DataSnapshot).ref
+                        print("Loja_ID: \(self.loja_id.key)")
+                    }
+                }
+                
+                if !existeLoja {
+                    print("A LOJA NÃO EXISTE")
+                    self.loja_id = self.dbref.child("lojas").childByAutoId()
+                    self.loja_id.setValue(["nome": self.nomeLojaTextField.text!])
+                    print("NOVA LOJA ADICIONADA")
+                }
+                
+                if self.vendedor_id == nil {
+                    self.vendedor_id = self.dbref.child("vendedores").childByAutoId()
+                    self.vendedor_id.setValue(["nome": self.nomeVendedorTextField.text!, "loja_id": self.loja_id.key, "disponivel": true])
+                    print("NOVO VENDEDOR ADICIONADO")
+                    self.defaults.set(self.vendedor_id.key, forKey: "Vendedor")
+                    print("NOVO VENDEDOR GRAVADO")
+                } else {
+                    print("VENDEDOR EXISTE")
+                }
+                
+                self.performSegue(withIdentifier: "moveToChatVendedor", sender: self)
+                
+            }) { (error) in
+                    print(error.localizedDescription)
+                    dadosValidos = false
+            }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "moveToChatVendedor") {
+            let vc = segue.destination as! StoreTableViewController
+            vc.vendedor_id = self.vendedor_id
+        }
+    }
+    
 }
