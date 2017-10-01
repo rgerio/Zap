@@ -61,34 +61,38 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                     if self.cliente_id == nil {
                         self.cliente_id = self.dbref.child("clientes").childByAutoId()
                         self.cliente_id.setValue(["nome": self.inputName.text])
-                        print("Novo cliente adicionado")
+                        print("NOVO CLIENTE ADICIONADO")
                     }
                     if dadosValidos {
-                        let myRef = self.dbref.child("conversas").queryOrdered(byChild: "cliente_id").queryEqual(toValue: self.cliente_id.key)
+                        let conversasCliente = self.dbref.child("conversas").queryOrdered(byChild: "cliente_id").queryEqual(toValue: self.cliente_id.key)
                         
-                        myRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                        conversasCliente.observeSingleEvent(of: .value, with: { (snapshot) in
                             // OBTENCAO DA CONVERSA
-                            
+                            var existeConversa = false
                             for snap in snapshot.children {
                                 let value = (snap as! DataSnapshot).value as? NSDictionary
                                 let produto_id = value?["produto_id"] as? String ?? ""
                                 print("Produto_ID: \(produto_id)")
                                 if produto_id == self.produto_id.key {
                                     print("EXISTE UMA CONVERSA")
+                                    existeConversa = true
                                     self.conversa_id = (snap as! DataSnapshot).ref
-                                    print(self.conversa_id.key)
-                                } else {
-                                    print("NÃO EXISTE UMA CONVERSA")
-                                    
-                                    self.conversa_id = self.dbref.child("conversas").childByAutoId()
-                                    self.conversa_id.setValue(["cliente_id": self.cliente_id.key, "produto_id": self.produto_id.key, "vendedoratual_id": "", "mensagens":""])
-                                    print("Novo produto adicionado")
-                                    
+                                    print("Conversa_ID: \(self.conversa_id.key)")
                                 }
-                                
                             }
+                            
+                            if !existeConversa {
+                                print("NÃO EXISTE UMA CONVERSA")
+                                self.conversa_id = self.dbref.child("conversas").childByAutoId()
+                                self.conversa_id.setValue(["cliente_id": self.cliente_id.key, "produto_id": self.produto_id.key, "vendedoratual_id": "", "mensagens":""])
+                                print("NOVA CONVERSA ADICIONADA")
+                            }
+                            
+                            self.performSegue(withIdentifier: "moveToChat", sender: self)
+                            
                         }) { (error) in
                             print(error.localizedDescription)
+                            dadosValidos = false
                         }
                         
                         
@@ -96,15 +100,11 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                             // DEBUG DE OBTENCAO DO CLIENTE
                             let value = snapshot.value as? NSDictionary
                             let username = value?["nome"] as? String ?? ""
-                            print("Usuário: \(username)")
+                            print("USUÁRIO: \(username)")
                         }) { (error) in
                             print(error.localizedDescription)
                             dadosValidos = false
                         }
-                        
-                        
-                        
-                        self.performSegue(withIdentifier: "moveToChat", sender: self)
                     }
                 } else {
                     print("PRODUTO NÃO EXISTE")
@@ -115,8 +115,6 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                 print(error.localizedDescription)
                 dadosValidos = false
             }
-            
-
         }
     }
     
