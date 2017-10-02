@@ -13,6 +13,7 @@ class ShowCodeViewController: UIViewController {
     @IBOutlet weak var codigoLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
         codigoLabel.text = codigo
      
     }

@@ -23,6 +23,8 @@ class StoreTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.hidesBackButton = true
+        
         self.dbref = Database.database().reference()
         
         //debug
@@ -46,7 +48,6 @@ class StoreTableViewController: UITableViewController {
         
         //CARREGAMENTO DAS CONVERSAS
         self.dbref.child("conversas").queryOrdered(byChild: "vendedoratual_id").queryEqual(toValue: self.vendedor_id.key).observe(.childAdded, with:  { (snapshot) -> Void in
-            print("Há \(snapshot.childrenCount) conversas")
             
             self.conversas.append(snapshot)
             

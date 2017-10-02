@@ -54,7 +54,7 @@ class GenerateProductViewController: UIViewController,UITextFieldDelegate,UIText
     }
 
     @IBAction func gerarCodigo(_ sender: Any) {
-        let alertEmpty = UIAlertController(title: "Campos não Preenchidos", message: "Preencha os campos! Por favor.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertEmpty = UIAlertController(title: "Nome Inválido", message: "Por favor, verifique o nome do produto e tente novamente.", preferredStyle: UIAlertControllerStyle.alert)
         alertEmpty.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
        
         if  let nomeProduto = nomeProduoTextField.text,
