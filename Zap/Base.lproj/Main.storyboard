@@ -786,7 +786,7 @@
         <image name="imagemChamada" width="720" height="1280"/>
         <image name="imagemChat" width="720" height="1280"/>
         <image name="productImage0" width="1035" height="1200"/>
-        <image name="rennerImage" width="160" height="160"/>
+        <image name="rennerImage" width="450" height="470"/>
         <image name="user" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
