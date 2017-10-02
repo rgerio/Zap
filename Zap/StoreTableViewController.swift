@@ -86,14 +86,19 @@ class StoreTableViewController: UITableViewController {
 
         // Configure the cell...
         let value = self.conversas[indexPath.row].value as? NSDictionary
+        
         let conversa_id = value?["cliente_id"] as? String ?? ""
         self.dbref.child("clientes").child(conversa_id).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             cell.storeNameLabel.text = value?["nome"] as? String ?? ""
         })
+        let produto_id = value?["produto_id"] as? String ?? ""
+        self.dbref.child("produtos").child(produto_id).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            cell.storeLastTimeLabel.text = "Assunto: " + (value?["nome"] as? String ?? "")
+        })
         
         
-
         return cell
     }
 
