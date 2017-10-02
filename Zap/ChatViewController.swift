@@ -28,7 +28,12 @@ class ChatViewController: JSQMessagesViewController {
         super.viewDidLoad()
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
-        self.inputToolbar.contentView.leftBarButtonItem = nil
+        
+        let imageWidth: CGFloat = 21
+        let image = UIImage(named: "carrinho")
+        
+        self.inputToolbar.contentView.leftBarButtonItemWidth = imageWidth
+        self.inputToolbar.contentView.leftBarButtonItem.setImage(image, for: .normal)
         title = "Zap"
         observeMessages()
     }
