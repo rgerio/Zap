@@ -22,6 +22,15 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     var nomeVendedor = ""
     var loja_id = ""
     
+    
+    @IBOutlet weak var sairButtonOutlet: UIButton!
+    @IBAction func sairButton(_ sender: Any) {
+        self.defaults.removeObject(forKey: "Cliente")
+        self.defaults.removeObject(forKey: "Vendedor")
+        self.defaults.removeObject(forKey: "LojaKey")
+        self.defaults.removeObject(forKey: "TipoAcesso")
+        self.performSegue(withIdentifier: "sairSegue1", sender: self)
+    }
     @IBOutlet weak var inputNameLabel: UILabel!
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var inputCode: UITextField!
@@ -205,6 +214,11 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
         if self.cliente_id != nil {
             self.inputName.isHidden = true
             self.inputNameLabel.isHidden = true
+        }
+        if self.inputName.isHidden == false {
+            self.sairButtonOutlet.isHidden = true
+        } else {
+            self.sairButtonOutlet.isHidden = false
         }
     }
 

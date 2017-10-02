@@ -74,6 +74,14 @@
                                     <action selector="buttonEnter:" destination="tBX-aw-iw9" eventType="touchUpInside" id="Js6-oH-vUI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WhR-kK-8X1">
+                                <rect key="frame" x="121" y="604" width="132" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Não sou um cliente"/>
+                                <connections>
+                                    <action selector="sairButton:" destination="tBX-aw-iw9" eventType="touchUpInside" id="UOC-Rg-kyV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -84,7 +92,9 @@
                         <outlet property="inputCode" destination="bEa-UF-IiI" id="GYh-RO-hLS"/>
                         <outlet property="inputName" destination="KhX-6f-DOw" id="D5B-mu-LCa"/>
                         <outlet property="inputNameLabel" destination="7D7-si-BlE" id="AbY-1I-SY0"/>
+                        <outlet property="sairButtonOutlet" destination="WhR-kK-8X1" id="a6I-DN-by2"/>
                         <segue destination="sEo-fD-0a9" kind="show" identifier="moveToChat" id="VuA-SE-0Sf"/>
+                        <segue destination="HMI-zB-VC0" kind="show" identifier="sairSegue1" id="v1D-5b-rrl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XpO-h7-0Yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -786,13 +796,13 @@
         <image name="imagemChamada" width="720" height="1280"/>
         <image name="imagemChat" width="720" height="1280"/>
         <image name="productImage0" width="1035" height="1200"/>
-        <image name="rennerImage" width="160" height="160"/>
+        <image name="rennerImage" width="450" height="470"/>
         <image name="user" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ioN-hH-fG7"/>
         <segue reference="SFp-Mv-PXb"/>
         <segue reference="L5w-zg-4mq"/>
-        <segue reference="bHQ-89-q1n"/>
+        <segue reference="VuA-SE-0Sf"/>
     </inferredMetricsTieBreakers>
 </document>
