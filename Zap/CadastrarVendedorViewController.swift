@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class CadastrarVendedorViewController: UIViewController {
+class CadastrarVendedorViewController: UIViewController, UITextFieldDelegate {
     var dbref: DatabaseReference!
     let defaults = UserDefaults.standard
     
@@ -18,11 +18,14 @@ class CadastrarVendedorViewController: UIViewController {
     
     @IBOutlet weak var nomeLojaTextField: UITextField!
     @IBOutlet weak var nomeVendedorTextField: UITextField!
-    @IBOutlet weak var chaveLojaTextField: UITextField!
 
 
      override func viewDidLoad() {
         super.viewDidLoad()
+        self.nomeLojaTextField.delegate = self
+        self.nomeLojaTextField.tag = 0
+        self.nomeVendedorTextField.delegate = self
+        self.nomeVendedorTextField.tag = 1
         dbref = Database.database().reference()
         
     }
@@ -32,7 +35,7 @@ class CadastrarVendedorViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
   
-    @IBAction func cadastrarButton(_ sender: UIButton) {
+    @IBAction func cadastrarButton(_ sender: Any?) {
         //DECLARACAO DE ALERTS
         let alertNomeLoja = UIAlertController(title: "Loja Inválida", message: "Por favor, digite o nome da loja.", preferredStyle: UIAlertControllerStyle.alert)
         alertNomeLoja.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
@@ -108,5 +111,18 @@ class CadastrarVendedorViewController: UIViewController {
         }
     }
     
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+            self.cadastrarButton(nil)
+        }
+        // Do not add a line break
+        return false
+    }
     
 }

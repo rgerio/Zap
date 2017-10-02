@@ -21,10 +21,12 @@ class GenerateProductViewController: UIViewController,UITextFieldDelegate,UIText
     var codigo = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        nomeProduoTextField.delegate = self
-        descricaoTextView.delegate = self
+        self.nomeProduoTextField.delegate = self
+        self.nomeProduoTextField.tag = 0
+        self.descricaoTextView.delegate = self
+        self.descricaoTextView.tag = 1
         drawDescricaoTextView()
-        dbref = Database.database().reference()
+        self.dbref = Database.database().reference()
    
     }
     
@@ -40,9 +42,17 @@ class GenerateProductViewController: UIViewController,UITextFieldDelegate,UIText
         // Dispose of any resources that can be recreated.
     }
 
-    func textFieldShouldReturn(_ textField : UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+            self.gerarCodigo(nil)
+        }
+        // Do not add a line break
+        return false
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -53,7 +63,7 @@ class GenerateProductViewController: UIViewController,UITextFieldDelegate,UIText
         return true
     }
 
-    @IBAction func gerarCodigo(_ sender: Any) {
+    @IBAction func gerarCodigo(_ sender: Any?) {
         let alertEmpty = UIAlertController(title: "Nome Inválido", message: "Por favor, verifique o nome do produto e tente novamente.", preferredStyle: UIAlertControllerStyle.alert)
         alertEmpty.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
        
