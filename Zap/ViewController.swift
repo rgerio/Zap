@@ -19,10 +19,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        //self.defaults.set("-KvSC4dIClkpMkVz5e4W", forKey: "Cliente") //Forca um cliente especifico
-        
         /*
+        self.defaults.set("-KvSC4dIClkpMkVz5e4W", forKey: "Cliente") //Forca um cliente especifico
+        
+        
         self.defaults.set("-KvOzGzohDq3gaezDXJU", forKey: "Vendedor") //Forca um vendedor especifico
         self.defaults.set("-KvOzGznxufWreoizaLP", forKey: "LojaKey") //Forca um vendedor especifico
         */

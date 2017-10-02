@@ -102,7 +102,7 @@ class StoreTableViewController: UITableViewController {
         self.dbref.child("produtos").child(produto_id).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             cell.storeLastTimeLabel.text = "Assunto: " + (value?["nome"] as? String ?? "")
-            
+            /*
             let url = URL(string: (value?["imagem"] as? String ?? ""))
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
@@ -111,7 +111,7 @@ class StoreTableViewController: UITableViewController {
                     cell.storeImage.image = UIImage(data: data!)
                 }
             }
-
+         */
         })
         
         
@@ -171,6 +171,7 @@ class StoreTableViewController: UITableViewController {
             vc.senderId = self.vendedor_id.key
             vc.senderDisplayName = self.nomeVendedor
             vc.vendorname = self.vendedor_id.key
+            vc.vendorId = self.vendedor_id.key
         }
     }
     

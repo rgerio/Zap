@@ -21,6 +21,7 @@ class ChatViewController: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     var vendorname: String!
+    var vendorId: String!
     var lastId = 0
     
     override func viewDidLoad() {
@@ -104,7 +105,7 @@ class ChatViewController: JSQMessagesViewController {
             "id": "\(self.lastId + 1)",
             "senderId": self.senderId!,
             "data": formato.string(from: data),
-            "vendedor_id": self.vendorname!,
+            "vendedor_id": self.vendorId!,
             "texto": text!
         ]
         

@@ -177,6 +177,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
             vc.senderId = self.cliente_id.key
             vc.senderDisplayName = self.username
             vc.vendorname = self.nomeVendedor
+            vc.vendorId = self.vendedor_id
         }
     }
     
