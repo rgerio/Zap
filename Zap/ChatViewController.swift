@@ -79,14 +79,14 @@ class ChatViewController: JSQMessagesViewController {
     private func observeMessages() {
         newMessageRefHandle = self.messageRef.observe(.childAdded, with: { (snapshot) -> Void in
             let receivedMessage = snapshot.value as! Dictionary<String, String>
-            if let id = receivedMessage["id"] as String!, let data = receivedMessage["data"] as String!, let vendedorId = receivedMessage["vendedor_id"] as String!, let texto = receivedMessage["texto"] as String! {
+            if let id = receivedMessage["id"] as String!, let sender_Id = receivedMessage["senderId"] as String!, let data = receivedMessage["data"] as String!, let vendedorId = receivedMessage["vendedor_id"] as String!, let texto = receivedMessage["texto"] as String! {
                 self.lastId = Int(id)!
                 //self.firebaseMessages.append(messageToAppend)
-                if (vendedorId == self.senderId) {
-                    self.addMessage(withId: vendedorId, name: self.vendorname, text: texto)
+                if (sender_Id == self.senderId) {
+                    self.addMessage(withId: self.senderId, name: self.senderDisplayName, text: texto)
                 }
                 else {
-                    self.addMessage(withId: self.senderId, name: self.senderDisplayName, text: texto)
+                    self.addMessage(withId: sender_Id, name: self.vendorname, text: texto)
                 }
                 self.finishReceivingMessage()
             } else {
@@ -102,6 +102,7 @@ class ChatViewController: JSQMessagesViewController {
         
         let messageToSend = [
             "id": "\(self.lastId + 1)",
+            "senderId": self.senderId!,
             "data": formato.string(from: data),
             "vendedor_id": self.vendorname!,
             "texto": text!
