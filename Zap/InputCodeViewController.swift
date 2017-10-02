@@ -95,6 +95,13 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                                 
                                 self.vendedor_id = "-KvOzGzohDq3gaezDXJU"  //inserir uma logica aqui futuramente
                                 
+                                self.produto_id.observeSingleEvent(of: .value, with: { (snapshot) in
+                                    let value = snapshot.value as? NSDictionary
+                                    self.loja_id = value?["loja_id"] as? String ?? ""
+                                    print("LOJA: \(self.loja_id)")
+                                    //parei aqui
+                                })
+                                
                                 //Tentativa fracassada de escolher um vendedor
                                 /*self.produto_id.observeSingleEvent(of: .value, with: { (snapshot) in
                                     let value = snapshot.value as? NSDictionary

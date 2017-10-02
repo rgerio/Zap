@@ -27,9 +27,6 @@ class StoreTableViewController: UITableViewController {
         
         self.dbref = Database.database().reference()
         
-        //debug
-        self.defaults.set("-KvOzGzohDq3gaezDXJU", forKey: "Vendedor")
-        
         //CARREGAMENTO DO VENDEDOR
         let savedVendedor = self.defaults.object(forKey: "Vendedor") as? String
         print("CARREGANDO VENDEDOR...")
