@@ -14,31 +14,21 @@ class ChatViewController: JSQMessagesViewController {
     var conversa_id: DatabaseReference!
     lazy var messageRef: DatabaseReference! = self.conversa_id.child("mensagens")
     var newMessageRefHandle: DatabaseHandle!
-    var firebaseMessages = [Mensagens]()
+    //var firebaseMessages = [Dictionary<String, String>]()
     var messages = [JSQMessage]()
     
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     var vendorname: String!
-    var lastSize = 0
+    var lastId = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         title = "Zap"
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        // messages from someone else
-        addMessage(withId: "foo", name: "Mr.Bolt", text: "João, como está indo o chat?")
-        // messages sent from local sender
-        addMessage(withId: senderId, name: "Me", text: "Oi gente!")
-        addMessage(withId: senderId, name: "Me", text: "Tá saindo!")
-        // animates the receiving of a new message on the view
-        finishReceivingMessage()
+        observeMessages()
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
@@ -87,27 +77,21 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     private func observeMessages() {
-
-        newMessageRefHandle = self.messageRef.observe(.value, with: { (snapshot) -> Void in
-            self.firebaseMessages = snapshot.value as! [Mensagens]
-            var counter = 0
-            for mensagem in self.firebaseMessages {
-                if let id = mensagem.id as String!, let data = mensagem.data as String!, let vendedorId = mensagem.vendedorId as String!, let texto = mensagem.texto as String! {
-                    counter += 1
-                    if (counter > self.lastSize) {
-                        self.lastSize = counter
-                        if (vendedorId == self.senderId) {
-                            self.addMessage(withId: id, name: self.vendorname, text: texto)
-                        }
-                        else {
-                            self.addMessage(withId: id, name: self.senderDisplayName, text: texto)
-                        }
-                    }
-                } else {
-                    print("Erro! Mensagem em formato desconhecido!")
+        newMessageRefHandle = self.messageRef.observe(.childAdded, with: { (snapshot) -> Void in
+            let receivedMessage = snapshot.value as! Dictionary<String, String>
+            if let id = receivedMessage["id"] as String!, let data = receivedMessage["data"] as String!, let vendedorId = receivedMessage["vendedor_id"] as String!, let texto = receivedMessage["texto"] as String! {
+                self.lastId = Int(id)!
+                //self.firebaseMessages.append(messageToAppend)
+                if (vendedorId == self.senderId) {
+                    self.addMessage(withId: vendedorId, name: self.vendorname, text: texto)
                 }
+                else {
+                    self.addMessage(withId: self.senderId, name: self.senderDisplayName, text: texto)
+                }
+                self.finishReceivingMessage()
+            } else {
+                print("Erro! Mensagem em formato desconhecido!")
             }
-            self.finishReceivingMessage()
         })
     }
     
@@ -116,18 +100,19 @@ class ChatViewController: JSQMessagesViewController {
         let formato = DateFormatter()
         formato.dateFormat = "dd/MM/YYYY hh:mm"
         
-        let messageToSend = Mensagens(
-            Id: "\(self.lastSize + 1)",
-            Data: formato.string(from: data),
-            VendedorId: self.vendorname,
-            Texto: text!
-        )
+        let messageToSend = [
+            "id": "\(self.lastId + 1)",
+            "data": formato.string(from: data),
+            "vendedor_id": self.vendorname!,
+            "texto": text!
+        ]
         
-        self.lastSize += 1
-        self.firebaseMessages.append(messageToSend)
-        self.conversa_id.updateChildValues(["mensagens" : self.firebaseMessages])
-        JSQSystemSoundPlayer.jsq_playMessageSentSound()
-        self.finishSendingMessage()
+        if (messageToSend["texto"]!.characters.count > 0) {
+            //self.firebaseMessages.append(messageToSend)
+            self.messageRef.child(messageToSend["id"]!).setValue(messageToSend)
+            JSQSystemSoundPlayer.jsq_playMessageSentSound()
+            self.finishSendingMessage()
+        }
     }
     
 }
