@@ -18,7 +18,8 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     var produto_id: DatabaseReference!
     var conversa_id: DatabaseReference!
     var username = ""
-    var vendorname = ""
+    var vendedor_id = ""
+    var nomeVendedor = ""
     
     @IBOutlet weak var inputNameLabel: UILabel!
     @IBOutlet weak var inputName: UITextField!
@@ -84,17 +85,33 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                                     existeConversa = true
                                     self.conversa_id = (snap as! DataSnapshot).ref
                                     print("Conversa_ID: \(self.conversa_id.key)")
+                                    self.vendedor_id = value?["vendedoratual_id"] as? String ?? ""
                                 }
                             }
                             
                             if !existeConversa {
                                 print("NÃO EXISTE UMA CONVERSA")
+                                self.vendedor_id = "-KvOzGzohDq3gaezDXJU"  //inserir uma logica aqui futuramente
                                 self.conversa_id = self.dbref.child("conversas").childByAutoId()
-                                self.conversa_id.setValue(["cliente_id": self.cliente_id.key, "produto_id": self.produto_id.key, "vendedoratual_id": "", "mensagens":""])
+                                self.conversa_id.setValue(["cliente_id": self.cliente_id.key, "produto_id": self.produto_id.key, "vendedoratual_id": self.vendedor_id, "mensagens":""])
                                 print("NOVA CONVERSA ADICIONADA")
                             }
                             
-                            self.performSegue(withIdentifier: "moveToChat", sender: self)
+                            
+                            self.dbref.child("vendedores").child(self.vendedor_id).observeSingleEvent(of: .value, with: { (snapshot) in
+                                let value = snapshot.value as? NSDictionary
+                                self.nomeVendedor = value?["nome"] as? String ?? ""
+                                print("VENDEDOR ATUAL: \(self.nomeVendedor)")
+                                self.dbref.child("clientes").child(self.cliente_id.key).observeSingleEvent(of: .value, with: { (snapshot) in
+                                    // DEBUG DE OBTENCAO DO CLIENTE
+                                    let value = snapshot.value as? NSDictionary
+                                    self.username = value?["nome"] as? String ?? ""
+                                    print("USUÁRIO: \(self.username)")
+                                    
+                                    self.performSegue(withIdentifier: "moveToChat", sender: self)
+                                })
+                            })
+                            
                             
                         }) { (error) in
                             print(error.localizedDescription)
@@ -102,15 +119,6 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                         }
                         
                         
-                        self.cliente_id.observeSingleEvent(of: .value, with: { (snapshot) in
-                            // DEBUG DE OBTENCAO DO CLIENTE
-                            let value = snapshot.value as? NSDictionary
-                            self.username = value?["nome"] as? String ?? ""
-                            print("USUÁRIO: \(self.username)")
-                        }) { (error) in
-                            print(error.localizedDescription)
-                            dadosValidos = false
-                        }
                     }
                 } else {
                     print("PRODUTO NÃO EXISTE")
@@ -130,7 +138,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
             vc.conversa_id = self.conversa_id
             vc.senderId = self.cliente_id.key
             vc.senderDisplayName = self.username
-            vc.vendorname = self.vendorname
+            vc.vendorname = self.nomeVendedor
         }
     }
     
