@@ -20,6 +20,7 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
     var username = ""
     var vendedor_id = ""
     var nomeVendedor = ""
+    var loja_id = ""
     
     @IBOutlet weak var inputNameLabel: UILabel!
     @IBOutlet weak var inputName: UITextField!
@@ -91,7 +92,26 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                             
                             if !existeConversa {
                                 print("NÃO EXISTE UMA CONVERSA")
+                                
                                 self.vendedor_id = "-KvOzGzohDq3gaezDXJU"  //inserir uma logica aqui futuramente
+                                
+                                //Tentativa fracassada de escolher um vendedor
+                                /*self.produto_id.observeSingleEvent(of: .value, with: { (snapshot) in
+                                    let value = snapshot.value as? NSDictionary
+                                    self.loja_id = value?["loja_id"] as? String ?? ""
+                                    print("LOJA: \(self.loja_id)")
+                                    
+                                    self.dbref.child("vendedores").queryOrdered(byChild: "loja_id").queryEqual(toValue: self.loja_id).observeSingleEvent(of: .value, with: { (snapshot) in
+                                        let primeiro = (snapshot.children.nextObject() as! DataSnapshot)
+                                        let value = primeiro.value as? NSDictionary
+                                        self.vendedor_id = value?["vendedor_id"] as? String ?? ""
+                                        print("Vendedor: \(self.vendedor_id)")
+
+                                    })
+                                })*/
+                                
+                                
+                                
                                 self.conversa_id = self.dbref.child("conversas").childByAutoId()
                                 self.conversa_id.setValue(["cliente_id": self.cliente_id.key, "produto_id": self.produto_id.key, "vendedoratual_id": self.vendedor_id, "mensagens":""])
                                 print("NOVA CONVERSA ADICIONADA")
