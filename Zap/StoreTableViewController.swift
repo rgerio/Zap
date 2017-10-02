@@ -11,11 +11,49 @@ import FirebaseDatabase
 
 class StoreTableViewController: UITableViewController {
     
+    let defaults = UserDefaults.standard
+    var dbref: DatabaseReference!
+    
     var vendedor_id: DatabaseReference!
+    var conversas = [DataSnapshot]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.dbref = Database.database().reference()
+        
+        //debug
+        self.defaults.set("-KvOzGzohDq3gaezDXJU", forKey: "Vendedor")
+        
+        //CARREGAMENTO DO VENDEDOR
+        let savedVendedor = self.defaults.object(forKey: "Vendedor") as? String
+        print("CARREGANDO VENDEDOR...")
+        if savedVendedor != nil {
+            print("VENDEDOR CARREGADO")
+            vendedor_id = self.dbref.child("vendedores").child(savedVendedor!)
+        } else {
+            print("ERRO CRÍTICO: VENDEDOR NÃO FOI CARREGADO")
+        }
+        
+        //CARREGAMENTO DAS CONVERSAS
+        self.dbref.child("conversas").queryOrdered(byChild: "vendedoratual_id").queryEqual(toValue: self.vendedor_id.key).observe(.childAdded, with:  { (snapshot) -> Void in
+            print("Há \(snapshot.childrenCount) conversas")
+            
+            self.conversas.append(snapshot)
+            
+            self.tableView.insertRows(at: [IndexPath(row: self.conversas.count-1, section: 0)], with: UITableViewRowAnimation.automatic)
+            
+            /*self.conversasSnapshot = snapshot
+            
+            for snap in snapshot.children {
+                let value = (snap as! DataSnapshot).value as? NSDictionary
+                let produto_id = value?["produto_id"] as? String ?? ""
+                print("Produto_ID: \(produto_id)")
+            }
+            
+            self.tableView.reloadData()*/
+        })
         
 
         // Uncomment the following line to preserve selection between presentations
@@ -39,14 +77,22 @@ class StoreTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return self.conversas.count //Int((self.conversasSnapshot ?? DataSnapshot()).childrenCount)
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "storeCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "storeCell", for: indexPath) as! StoreTableViewCell
 
         // Configure the cell...
+        let value = self.conversas[indexPath.row].value as? NSDictionary
+        let conversa_id = value?["cliente_id"] as? String ?? ""
+        self.dbref.child("clientes").child(conversa_id).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            cell.storeNameLabel.text = value?["nome"] as? String ?? ""
+        })
+        
+        
 
         return cell
     }
