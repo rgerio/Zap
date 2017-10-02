@@ -691,7 +691,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Conversas" id="gX1-Jn-QZn"/>
                     <connections>
-                        <segue destination="TbC-4C-u8z" kind="show" identifier="chatSeller" id="oSf-0C-4My"/>
+                        <segue destination="sEo-fD-0a9" kind="show" identifier="chatSeller" id="bHQ-89-q1n"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7kf-u2-wvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -724,7 +724,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpd-ul-VzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1967" y="2310"/>
+            <point key="canvasLocation" x="3081" y="2310"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="f9l-3r-3lL">
@@ -811,5 +811,6 @@
         <segue reference="ioN-hH-fG7"/>
         <segue reference="SFp-Mv-PXb"/>
         <segue reference="JRc-CL-EMm"/>
+        <segue reference="bHQ-89-q1n"/>
     </inferredMetricsTieBreakers>
 </document>

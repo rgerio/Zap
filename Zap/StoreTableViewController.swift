@@ -162,6 +162,9 @@ class StoreTableViewController: UITableViewController {
             let vc = segue.destination as! ChatViewController
             let indexPath = sender as! NSIndexPath
             vc.conversa_id = self.conversas[indexPath.row].ref
+            vc.senderId = "algum_vendedor_id"
+            vc.senderDisplayName = "nome_do_vendedor"
+            vc.vendorname = "algum_cliente_id"
         }
     }
     
