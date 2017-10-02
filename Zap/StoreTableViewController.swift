@@ -84,7 +84,7 @@ class StoreTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storeCell", for: indexPath) as! StoreTableViewCell
 
-        // Configure the cell...
+        
         let value = self.conversas[indexPath.row].value as? NSDictionary
         
         let conversa_id = value?["cliente_id"] as? String ?? ""
@@ -96,6 +96,16 @@ class StoreTableViewController: UITableViewController {
         self.dbref.child("produtos").child(produto_id).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             cell.storeLastTimeLabel.text = "Assunto: " + (value?["nome"] as? String ?? "")
+            
+            let url = URL(string: (value?["imagem"] as? String ?? ""))
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                DispatchQueue.main.async {
+                    cell.storeImage.contentMode = .scaleAspectFill
+                    cell.storeImage.image = UIImage(data: data!)
+                }
+            }
+
         })
         
         
@@ -103,7 +113,9 @@ class StoreTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "chatSeller", sender: nil)
+        
+        
+        self.performSegue(withIdentifier: "chatSeller", sender: indexPath)
     }
     
     /*
@@ -146,7 +158,11 @@ class StoreTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if (segue.identifier == "chatSeller") {
+            let vc = segue.destination as! ChatViewController
+            let indexPath = sender as! NSIndexPath
+            vc.conversa_id = self.conversas[indexPath.row].ref
+        }
     }
     
 
