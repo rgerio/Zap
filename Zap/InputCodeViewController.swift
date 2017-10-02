@@ -99,45 +99,56 @@ class InputCodeViewController: UIViewController, UITextFieldDelegate {
                                     let value = snapshot.value as? NSDictionary
                                     self.loja_id = value?["loja_id"] as? String ?? ""
                                     print("LOJA: \(self.loja_id)")
-                                    //parei aqui
-                                })
-                                
-                                //Tentativa fracassada de escolher um vendedor
-                                /*self.produto_id.observeSingleEvent(of: .value, with: { (snapshot) in
-                                    let value = snapshot.value as? NSDictionary
-                                    self.loja_id = value?["loja_id"] as? String ?? ""
-                                    print("LOJA: \(self.loja_id)")
+                                    
                                     
                                     self.dbref.child("vendedores").queryOrdered(byChild: "loja_id").queryEqual(toValue: self.loja_id).observeSingleEvent(of: .value, with: { (snapshot) in
-                                        let primeiro = (snapshot.children.nextObject() as! DataSnapshot)
-                                        let value = primeiro.value as? NSDictionary
-                                        self.vendedor_id = value?["vendedor_id"] as? String ?? ""
-                                        print("Vendedor: \(self.vendedor_id)")
+                                        
+                                        
+                                        for snap in snapshot.children {
+                                            let value = (snap as! DataSnapshot).value as? NSDictionary
+                                            self.nomeVendedor = value?["nome"] as? String ?? ""
+                                            print("Vendedor: \(self.nomeVendedor)")
+                                            self.vendedor_id = (snap as! DataSnapshot).key
+                                            print("Vendedor_id: \(self.vendedor_id)")
+                                            break
+                                        }
+                                        
+                                        self.conversa_id = self.dbref.child("conversas").childByAutoId()
+                                        self.conversa_id.setValue(["cliente_id": self.cliente_id.key, "produto_id": self.produto_id.key, "vendedoratual_id": self.vendedor_id, "mensagens":""])
+                                        print("NOVA CONVERSA ADICIONADA")
 
+                                        self.dbref.child("clientes").child(self.cliente_id.key).observeSingleEvent(of: .value, with: { (snapshot) in
+                                            // DEBUG DE OBTENCAO DO CLIENTE
+                                            let value = snapshot.value as? NSDictionary
+                                            self.username = value?["nome"] as? String ?? ""
+                                            print("USUÁRIO: \(self.username)")
+                                            
+                                            self.performSegue(withIdentifier: "moveToChat", sender: self)
+                                        })
+                                        
                                     })
-                                })*/
-                                
-                                
-                                
-                                self.conversa_id = self.dbref.child("conversas").childByAutoId()
-                                self.conversa_id.setValue(["cliente_id": self.cliente_id.key, "produto_id": self.produto_id.key, "vendedoratual_id": self.vendedor_id, "mensagens":""])
-                                print("NOVA CONVERSA ADICIONADA")
+                                    
+                                })
+
+                            } else {
+                                self.dbref.child("vendedores").child(self.vendedor_id).observeSingleEvent(of: .value, with: { (snapshot) in
+                                    let value = snapshot.value as? NSDictionary
+                                    self.nomeVendedor = value?["nome"] as? String ?? ""
+                                    print("VENDEDOR ATUAL: \(self.nomeVendedor)")
+                                    self.dbref.child("clientes").child(self.cliente_id.key).observeSingleEvent(of: .value, with: { (snapshot) in
+                                        // DEBUG DE OBTENCAO DO CLIENTE
+                                        let value = snapshot.value as? NSDictionary
+                                        self.username = value?["nome"] as? String ?? ""
+                                        print("USUÁRIO: \(self.username)")
+                                        
+                                        self.performSegue(withIdentifier: "moveToChat", sender: self)
+                                    })
+                                })
                             }
                             
                             
-                            self.dbref.child("vendedores").child(self.vendedor_id).observeSingleEvent(of: .value, with: { (snapshot) in
-                                let value = snapshot.value as? NSDictionary
-                                self.nomeVendedor = value?["nome"] as? String ?? ""
-                                print("VENDEDOR ATUAL: \(self.nomeVendedor)")
-                                self.dbref.child("clientes").child(self.cliente_id.key).observeSingleEvent(of: .value, with: { (snapshot) in
-                                    // DEBUG DE OBTENCAO DO CLIENTE
-                                    let value = snapshot.value as? NSDictionary
-                                    self.username = value?["nome"] as? String ?? ""
-                                    print("USUÁRIO: \(self.username)")
-                                    
-                                    self.performSegue(withIdentifier: "moveToChat", sender: self)
-                                })
-                            })
+                            
+                            
                             
                             
                         }) { (error) in
