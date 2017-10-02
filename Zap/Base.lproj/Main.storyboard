@@ -808,7 +808,6 @@
         <image name="user" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ioN-hH-fG7"/>
         <segue reference="SFp-Mv-PXb"/>
         <segue reference="JRc-CL-EMm"/>
     </inferredMetricsTieBreakers>

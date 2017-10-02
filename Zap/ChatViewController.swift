@@ -95,7 +95,7 @@ class ChatViewController: JSQMessagesViewController {
                 if let id = mensagem.id as String!, let data = mensagem.data as String!, let vendedorId = mensagem.vendedorId as String!, let texto = mensagem.texto as String! {
                     counter += 1
                     if (counter > self.lastSize) {
-                        self.lastSize += 1
+                        self.lastSize = counter
                         if (vendedorId == self.senderId) {
                             self.addMessage(withId: id, name: self.vendorname, text: texto)
                         }
@@ -112,18 +112,22 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        let itemRef = messageRef.childByAutoId() // 1
-        let messageItem = [ // 2
-            "senderId": senderId!,
-            "senderName": senderDisplayName!,
-            "text": text!,
-            ]
+        let data = Date()
+        let formato = DateFormatter()
+        formato.dateFormat = "dd/MM/YYYY hh:mm"
         
-        itemRef.setValue(messageItem) // 3
+        let messageToSend = Mensagens(
+            Id: "\(self.lastSize + 1)",
+            Data: formato.string(from: data),
+            VendedorId: self.vendorname,
+            Texto: text!
+        )
         
-        JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
-        
-        finishSendingMessage() // 5
+        self.lastSize += 1
+        self.firebaseMessages.append(messageToSend)
+        self.conversa_id.updateChildValues(["mensagens" : self.firebaseMessages])
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        self.finishSendingMessage()
     }
     
 }
