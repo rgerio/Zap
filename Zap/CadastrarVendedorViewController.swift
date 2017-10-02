@@ -92,6 +92,7 @@ class CadastrarVendedorViewController: UIViewController {
                     self.vendedor_id.setValue(["nome": self.nomeVendedorTextField.text!, "loja_id": self.loja_id.key, "disponivel": true])
                     print("NOVO VENDEDOR ADICIONADO")
                     self.defaults.set(self.vendedor_id.key, forKey: "Vendedor")
+                    self.defaults.set(self.loja_id.key, forKey: "LojaKey")
                     print("NOVO VENDEDOR GRAVADO")
                 } else {
                     print("VENDEDOR EXISTE")

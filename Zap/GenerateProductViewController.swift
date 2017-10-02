@@ -46,16 +46,16 @@ class GenerateProductViewController: UIViewController,UITextFieldDelegate,UIText
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-    if (text == "\n") {
-    textView.resignFirstResponder()
-    return false
+        if (text == "\n") {
+        textView.resignFirstResponder()
+        return false
     }
-    return true
+        return true
     }
 
     @IBAction func gerarCodigo(_ sender: Any) {
-        let alertEmpty = UIAlertController(title: "Campos não preenchidos", message: "Preencha os campos! Por favor.", preferredStyle: UIAlertControllerStyle.alert)
-        alertEmpty.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)) //gerenciando as notificaçoes
+        let alertEmpty = UIAlertController(title: "Campos não Preenchidos", message: "Preencha os campos! Por favor.", preferredStyle: UIAlertControllerStyle.alert)
+        alertEmpty.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
        
         if  let nomeProduto = nomeProduoTextField.text,
             let descricao = descricaoTextView.text, !nomeProduto.isEmpty
@@ -63,14 +63,13 @@ class GenerateProductViewController: UIViewController,UITextFieldDelegate,UIText
              let vendedores = self.dbref.child("vendedores")
              let produtos = self.dbref.child("produtos")
             vendedores.observeSingleEvent(of: .value, with: { (snapshot) in
-               
                 let produto =  Produto(Nome: nomeProduto,LojaId: self.defaults.string(forKey: "LojaKey")!, Descricao: descricao)
 
                 produto.codigo = produto.gerarCodigo()
                     print(produto.codigo)
                     if(!snapshot.hasChild(produto.codigo)){
                         
-                       produtos.child(produto.codigo).setValue(["nome": produto.nome,"descricao":produto.descricao,"imagem":"nao","loja_id":produto.lojaId])
+                       produtos.child(produto.codigo).setValue(["nome": produto.nome, "descricao":produto.descricao, "imagem":"nao", "loja_id":produto.lojaId])
                         
                          self.codigo = produto.codigo
                         
