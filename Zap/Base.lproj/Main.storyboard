@@ -691,6 +691,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Conversas" id="gX1-Jn-QZn"/>
                     <connections>
+                        <outlet property="navItem" destination="gX1-Jn-QZn" id="s1p-6O-VLh"/>
                         <segue destination="sEo-fD-0a9" kind="show" identifier="chatSeller" id="bHQ-89-q1n"/>
                     </connections>
                 </tableViewController>
@@ -808,6 +809,7 @@
         <image name="user" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ioN-hH-fG7"/>
         <segue reference="SFp-Mv-PXb"/>
         <segue reference="JRc-CL-EMm"/>
         <segue reference="bHQ-89-q1n"/>

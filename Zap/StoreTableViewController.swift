@@ -16,8 +16,10 @@ class StoreTableViewController: UITableViewController {
     
     var vendedor_id: DatabaseReference!
     var conversas = [DataSnapshot]()
+    var nomeVendedor = ""
 
-
+    @IBOutlet weak var navItem: UINavigationItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,8 +32,14 @@ class StoreTableViewController: UITableViewController {
         let savedVendedor = self.defaults.object(forKey: "Vendedor") as? String
         print("CARREGANDO VENDEDOR...")
         if savedVendedor != nil {
-            print("VENDEDOR CARREGADO")
-            vendedor_id = self.dbref.child("vendedores").child(savedVendedor!)
+            self.vendedor_id = self.dbref.child("vendedores").child(savedVendedor!)
+            
+            self.vendedor_id.observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                self.nomeVendedor = value?["nome"] as? String ?? ""
+                self.navItem.title = "Conversas de " + self.nomeVendedor
+                print("VENDEDOR CARREGADO: \(self.nomeVendedor)")
+            })
         } else {
             print("ERRO CRÍTICO: VENDEDOR NÃO FOI CARREGADO")
         }
@@ -162,9 +170,9 @@ class StoreTableViewController: UITableViewController {
             let vc = segue.destination as! ChatViewController
             let indexPath = sender as! NSIndexPath
             vc.conversa_id = self.conversas[indexPath.row].ref
-            vc.senderId = "algum_vendedor_id"
-            vc.senderDisplayName = "nome_do_vendedor"
-            vc.vendorname = "algum_cliente_id"
+            vc.senderId = self.vendedor_id.key
+            vc.senderDisplayName = self.nomeVendedor
+            vc.vendorname = self.vendedor_id.key
         }
     }
     
